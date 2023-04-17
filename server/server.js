@@ -1,4 +1,5 @@
 const express = require("express");
+const logger = require("./logger.js");
 const app = express();
 const port = 3500;
 
@@ -6,12 +7,19 @@ const port = 3500;
 // used for when this is served under a reverse proxy
 const serverRoot = "/denodaco";
 
+logger.init();
+
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });
 
-
-app.get(serverRoot, (req, res) => 
+app.all(serverRoot, (req, res, next) => 
 {
-    res.send("HEllooL");
+    logger.logRequest(req);
+    next();
+});
+
+app.get(serverRoot, (req, res, next) => 
+{
+    res.send("lol");
 });
