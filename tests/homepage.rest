@@ -1,0 +1,2 @@
+### NO AUTH TOKEN
+GET https://casdnas.duckdns.org/denodaco/
