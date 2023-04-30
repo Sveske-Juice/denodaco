@@ -1,10 +1,11 @@
-require("dotenv").config();
+require("dotenv").config({path: __dirname + "/.env"}); // Load .env variables
 
 const express = require("express");
 const logger = require("./logger.js");
 
 // middleware
-const verifyJWT = require("./middleware/jwt_verify");
+const verifyJWT   = require("./middleware/jwt_verify");
+const login       = require("./middleware/login"); 
 
 const app = express();
 const port = 3500;
@@ -16,8 +17,11 @@ const serverRoot = "/denodaco";
 logger.init();
 
 app.listen(port, function () {
-  console.log(`Example app listening on port ${port}!`);
+  console.log(`Listening on port ${port}!`);
 });
+
+app.use(express.json());
+app.use(verifyJWT);
 
 app.all(serverRoot, (req, res, next) => 
 {
@@ -25,9 +29,9 @@ app.all(serverRoot, (req, res, next) =>
     next();
 });
 
-app.use(verifyJWT);
-
 app.get(serverRoot + "/s", (req, res, next) => 
 {
     res.send("lol");
 });
+
+app.post(serverRoot + "/api/login", login);

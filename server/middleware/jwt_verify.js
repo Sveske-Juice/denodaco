@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 function verifyToken(req, res, next)
 {
-
+    next();
 }
 
 function denyToken(req, res)
