@@ -3,7 +3,7 @@ const logFile = __dirname + "/logs/latest.log";
 
 function init() {
     // TODO move old log files for long term storage
-    
+
     // First time run or server cleared log files
     if (!fs.existsSync(logFile))
         return;
@@ -21,7 +21,6 @@ function logRequest(request) {
     fs.appendFile(logFile, loggedReq, (err) => {
         if (err) throw err;
     });
-
 }
 
 module.exports = {

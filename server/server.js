@@ -1,5 +1,9 @@
 const express = require("express");
 const logger = require("./logger.js");
+
+// middleware
+const verifyJWT = require("./middleware/jwt_verify");
+
 const app = express();
 const port = 3500;
 
@@ -18,6 +22,8 @@ app.all(serverRoot, (req, res, next) =>
     logger.logRequest(req);
     next();
 });
+
+app.use(verifyJWT);
 
 app.get(serverRoot + "/s", (req, res, next) => 
 {
