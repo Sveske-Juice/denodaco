@@ -12,8 +12,6 @@ const login       = require("./middleware/login");
 const app = express();
 const port = 3500;
 
-
-
 logger.init();
 
 app.listen(port, function () {
@@ -24,7 +22,6 @@ app.use((req, res, next) => {logger.logRequest(req); next(); });
 
 app.use(express.json());
 app.use(verifyJWT);
-
 
 app.get(config.serverRoot() + "/s", (req, res, next) => 
 {
