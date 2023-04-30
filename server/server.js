@@ -1,6 +1,7 @@
 require("dotenv").config({path: __dirname + "/.env"}); // Load .env variables
 
-const config = require("./config");
+const config      = require("./config");
+const database    = require("./database");
 
 const express     = require("express");
 const logger      = require("./logger.js");
@@ -13,9 +14,10 @@ const app = express();
 const port = 3500;
 
 logger.init();
+database.init();
 
 app.listen(port, function () {
-  console.log(`Listening on port ${port}!`);
+  logger.log(`Listening on port ${port}!`);
 });
 
 app.use((req, res, next) => {logger.logRequest(req); next(); });
