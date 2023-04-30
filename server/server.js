@@ -19,7 +19,7 @@ app.all(serverRoot, (req, res, next) =>
     next();
 });
 
-app.get(serverRoot, (req, res, next) => 
+app.get(serverRoot + "/s", (req, res, next) => 
 {
     res.send("lol");
 });

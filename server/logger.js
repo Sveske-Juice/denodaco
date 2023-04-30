@@ -3,9 +3,8 @@ const logFile = __dirname + "/logs/latest.log";
 
 function init() {
     // TODO move old log files for long term storage
-    console.log("INIT");
+    
     // First time run or server cleared log files
-
     if (!fs.existsSync(logFile))
         return;
 
