@@ -31,3 +31,9 @@ app.get(config.serverRoot() + "/s", (req, res, next) =>
 });
 
 app.post(config.serverRoot() + "/api/login", login);
+
+
+process.on('SIGINT', function() {
+  database.cleanup();
+  process.exit();
+});

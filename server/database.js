@@ -23,7 +23,18 @@ function init()
     });
 }
 
+function cleanup()
+{
+    // Gracefully close db connection
+    connection.end((err) => 
+    {
+        if (err) throw err;
+        logger.log(`[DB] Connection gracefully closed`);
+    });
+}
+
 module.exports = 
 {
     init,
+    cleanup,
 }
