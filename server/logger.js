@@ -20,19 +20,40 @@ function logRequest(request)
 {
     const loggedReq = `Request to ${request.url} from ${request.headers['x-forwarded-for']}\n`;
     log(loggedReq);
-    fs.appendFile(logFile, loggedReq, (err) => {
-        if (err) throw err;
-    });
+}
+
+function formatLog(msg)
+{
+    const output = `[${new Date()}] ${msg}`;
+    return output;
 }
 
 function log(msg)
 {
-    const output = `[${new Date()}] ${msg}`;
+    output = formatLog(msg);
     console.log(output);
+    fs.appendFile(logFile, output + '\n', (err) => {
+        if (err) throw err;
+    });
+}
+
+function logSync(msg)
+{
+    output = formatLog(msg);
+    console.log(output);
+    try
+    {
+        fs.appendFileSync(logFile, output + '\n');
+    }
+    catch(err)
+    {
+        throw err;
+    }
 }
 
 module.exports = {
     logRequest,
     log,
+    logSync,
     init,
 }

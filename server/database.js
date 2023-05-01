@@ -25,12 +25,16 @@ function init()
 
 function cleanup()
 {
-    // Gracefully close db connection
-    connection.end((err) => 
+    return new Promise((resolve) =>
     {
-        if (err) throw err;
-        logger.log(`[DB] Connection gracefully closed`);
-    });
+        // Gracefully close db connection
+        connection.end((err) => 
+        {
+            if (err) throw err;
+            logger.logSync(`[DB] Connection gracefully closed`);
+            resolve();
+        });
+    })
 }
 
 module.exports = 
