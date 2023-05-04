@@ -1,11 +1,12 @@
 {
-  "name": "denodaco",
-  "version": "1.0.0",
-  "description": "Definetly NO DAta COllection",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.22"
   },
-  "author": "",
-  "license": "GPL-3.0-or-later"
+  "scripts": {
+    "dev": "node_modules/.bin/nodemon src/server.js"
+  }
 }
