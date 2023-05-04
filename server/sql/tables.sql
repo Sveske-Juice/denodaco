@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(255) NOT NULL,
     is_admin BOOLEAN NOT NULL,
     has_profile_picture BOOLEAN NOT NULL,
+    hash VARCHAR(64) NOT NULL, 
+    salt VARCHAR(32) NOT NULL;
     PRIMARY KEY (id)
 );
 
