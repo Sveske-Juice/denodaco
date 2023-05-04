@@ -22,7 +22,6 @@ function login(req, res)
     
     const jwtData = {
         "username": username,
-    
     }
 
     const accessToken = jwt.sign(jwtData, process.env.JWT_SECRET);
