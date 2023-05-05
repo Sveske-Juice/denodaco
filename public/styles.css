@@ -45,6 +45,7 @@ button:hover {
 }
 
 
+/* NAV BAR. */
 ul {
     list-style-type: none;
     margin: 0;
@@ -80,5 +81,59 @@ li a:hover {
 
     margin-left: 25px;
     margin-right: 25px;
+    border-radius: 15px;
+}
+
+/* LOGIN MODAL */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #333;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    width: 80%;
+}
+  
+
+.close {
+    color: #c3c3c3;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content a {
+    color: black;
+    background-color: #ffb997;
+
+    text-decoration: none;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    margin: 25px;
+
     border-radius: 15px;
 }

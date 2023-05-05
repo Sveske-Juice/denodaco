@@ -3,6 +3,8 @@ Also hides signup and login buttons from nav bar if already logged in. Aswell as
 enabling logout button. */
 
 window.onload = init;
+let modal;
+let closeBtn;
 
 async function init()
 {
@@ -55,5 +57,10 @@ function authed()
 // Called on page load if user not logged in
 function notAuthed()
 {
+    modal = document.querySelector("#not-logged-in-modal");
+    closeBtn = document.querySelector("#not-logged-in-modal-close-btn");
 
+    modal.style.display = "block";
+
+    closeBtn.addEventListener("click", () => { modal.style.display = "none"; });
 }
