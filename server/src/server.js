@@ -4,6 +4,7 @@ const config      = require("./config");
 const database    = require("./database");
 
 const express     = require("express");
+const cookieparser= require("cookie-parser");
 const logger      = require("./logger.js");
 
 // middleware
@@ -24,12 +25,10 @@ app.listen(port, function () {
 app.use((req, res, next) => {logger.logRequest(req); next(); });
 
 app.use(express.json());
+app.use(cookieparser());
 app.use(verifyJWT);
 
-app.get(config.serverRoot() + "/s", (req, res, next) => 
-{
-    res.send("lol");
-});
+app.get(config.serverRoot() + "/api/pollauth", (req, res) => { res.sendStatus(200); });
 
 app.post(config.serverRoot() + "/api/login", login);
 app.post(config.serverRoot() + "/api/signup", signup);

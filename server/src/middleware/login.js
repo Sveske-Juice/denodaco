@@ -23,7 +23,7 @@ async function login(req, res)
         return;
     }
     
-    const dbResult = database.getUser(username)
+    database.getUser(username)
     .then(async function (result)
     {
         // Verify username exists
@@ -44,12 +44,13 @@ async function login(req, res)
                 logger.log(`Client typed wrong password for user '${user["username"]}'`);
                 res.statusMessage = "Wrong password";
                 res.sendStatus(401);
-                return; 
+                return;
             }
 
             // Passwords match
             logger.log(`[AUTH] User '${username} just logged in.`);
             const accessToken = createAccessToken(user);
+            res.cookie('accessToken', accessToken, { sameSite: 'strict', httpOnly: 'true', secure: 'true', maxAge: process.env.JWT_EXPIRATION * 1000});
             res.json({ "accessToken": accessToken});
             return;
         }

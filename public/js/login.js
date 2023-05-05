@@ -33,6 +33,7 @@ async function signin()
 
         const data = await response.json();
         console.log(data["accessToken"]);
+
         location.href = BASE_URL;
     }
     catch (err)

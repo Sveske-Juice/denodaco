@@ -2,7 +2,6 @@ const mysql = require("mysql");
 const logger = require("./logger");
 const moment = require("moment");
 
-const initialized = false;
 let connection;
 
 function init()

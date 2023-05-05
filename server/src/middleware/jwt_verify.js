@@ -10,23 +10,7 @@ function verifyToken(req, res, next)
         next();
         return;
     }
-    const authHeader = req.headers["authorization"];
-
-    if (authHeader == undefined)
-    {
-        denyToken("No token specified", res);
-        return;
-    }
-
-    const splittedHeader = authHeader.split("Bearer ");
-
-    if (splittedHeader == undefined || splittedHeader.length < 1)
-    {
-        denyToken("No token specified", res);
-        return;
-    }
-
-    const token = splittedHeader[1];
+    const token = req.cookies["accessToken"];
 
     if (token == undefined)
     {
@@ -41,7 +25,7 @@ function verifyToken(req, res, next)
             denyToken("Invalid token", res);
             return;
         }
-
+        res.locals.jwt = userInfo; // Give next middleware access to decoded token
         next();
     });
 }
@@ -53,7 +37,11 @@ function requiresAuthentication(req)
 
     if (req.path == config.serverRoot() + "/api/signup")
         return false;
-    
+ 
+    const seperated = req.path.split('.');
+    if (seperated.length == 2)
+        return false; // a file was requested for - allow access
+
     return true;
 }
 
