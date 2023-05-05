@@ -1,0 +1,6 @@
+-- USE WITH CAUTION!!!!
+
+USE denodaco;
+
+-- DELETE EVERY USER
+DELETE FROM users;

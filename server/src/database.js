@@ -48,6 +48,7 @@ async function addUser(userData)
 {
     let newUser = userData;
 
+    // TODO refactor this lmao
     // Verify required entries exists
     if (newUser["username"] == undefined)
         throw new Error("No username provided");
@@ -104,38 +105,38 @@ async function addUser(userData)
     newUser["birthdate"] = moment(newUser["birthdate"]).format('YYYY-MM-DD HH:mm:ss').toString();
 
     connection.query(
-`INSERT INTO users(
-    username,
-    first_name,
-    middle_names,
-    last_name,
-    country_code,
-    birthdate,
-    account_creation,
-    last_login,
-    email,
-    is_admin,
-    has_profile_picture,
-    hash,
-    salt)
-VALUES (
-    ${newUser["username"]},
-    ${newUser["first_name"]},
-    ${newUser["middle_names"]},
-    ${newUser["last_name"]},
-    ${newUser["country_code"]},
-    '${newUser["birthdate"]}',
-    '${newUser["account_creation"]}',
-    '${newUser["last_login"]}',
-    ${newUser["email"]},
-    ${newUser["is_admin"]},
-    ${newUser["has_profile_picture"]},
-    '${newUser["hash"]}',
-    '${newUser["salt"]}');`
-    , (err, result) => {
-        if (err) throw err;
-        return result;
-    });
+        `INSERT INTO users(
+            username,
+            first_name,
+            middle_names,
+            last_name,
+            country_code,
+            birthdate,
+            account_creation,
+            last_login,
+            email,
+            is_admin,
+            has_profile_picture,
+            hash,
+            salt)
+        VALUES (
+            ${newUser["username"]},
+            ${newUser["first_name"]},
+            ${newUser["middle_names"]},
+            ${newUser["last_name"]},
+            ${newUser["country_code"]},
+            '${newUser["birthdate"]}',
+            '${newUser["account_creation"]}',
+            '${newUser["last_login"]}',
+            ${newUser["email"]},
+            ${newUser["is_admin"]},
+            ${newUser["has_profile_picture"]},
+            '${newUser["hash"]}',
+            '${newUser["salt"]}');`
+            , (err) => {
+                if (err) throw err;
+                return;
+            });
 }
 
 module.exports = 

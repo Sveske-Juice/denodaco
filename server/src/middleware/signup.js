@@ -6,7 +6,7 @@ const logger = require("../logger");
 async function signup(req, res)
 {
     const userData = req.body;
-    logger.log(`User trying to sign in, with data: ${JSON.stringify(userData)}`);
+
     if (userData == undefined || userData == "")
     {
         res.statusMessage = "No user data specified";
@@ -14,17 +14,24 @@ async function signup(req, res)
         return;
     }
 
+    if (userData["password"] == undefined || userData["password"].length == 0)
+    {
+        res.statusMessage = "No password supplied";
+        res.sendStatus(400);
+        return;
+    }
+
     // Hash and salt password
     const salt = crypto.randomBytes(16).toString('hex');
     const saltedPass = userData["password"] + salt;
-    logger.log(userData["email"]);
+
     userData["salt"] = salt;
     argon2.hash(saltedPass).then((hash) => {
         userData["hash"] = hash;
 
-        database.addUser(userData).then((result) => {
+        database.addUser(userData).then(() => {
             res.sendStatus(200);
-            logger.log(`RESULT: ${result}`);
+            logger.log(`New user: ${userData["username"]} registered!`);
             return;
         }).catch((err) => {
             if (err instanceof Error)
