@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const config = require("./config");
 const logFile = path.normalize(__dirname + "/../logs/latest.log");
 
 function init()
@@ -19,6 +20,9 @@ function init()
 
 function logRequest(request)
 {
+    if (request.originalUrl == config.serverRoot() + "/api/pollauth")
+        return;
+
     const loggedReq = `Request to ${request.url} from ${request.headers['x-forwarded-for']}\n`;
     log(loggedReq);
 }
