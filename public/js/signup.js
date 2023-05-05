@@ -41,11 +41,16 @@ async function signup()
             },
             body: userData,
         });
-        const result = await response.json();
-        console.log(result);
+        
+        if (response.status !== 200)
+        {
+            alert(`An error occured while trying to sign in. \nReason: ${response.statusText}`);
+            return;
+        }
     }
     catch (err)
     {
+        alert(err);
         throw err;
     }
 }

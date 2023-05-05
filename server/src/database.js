@@ -72,22 +72,22 @@ async function addUser(userData)
 
     // TODO refactor this lmao
     // Verify required entries exists
-    if (newUser["username"] == undefined)
+    if (newUser["username"] == undefined || newUser["username"].length == 0)
         throw new Error("No username provided");
 
-    if (newUser["first_name"] == undefined)
+    if (newUser["first_name"] == undefined || newUser["first_name"].length == 0)
         throw new Error("First name not provided");
 
-    if (newUser["middle_names"] == undefined)
+    if (newUser["middle_names"] == undefined || newUser["middle_names"].length == 0)
         throw new Error("Middle names not provided");
 
-    if (newUser["last_name"] == undefined)
+    if (newUser["last_name"] == undefined || newUser["last_name"].length == 0)
         throw new Error("Last not provided");
     
-    if (newUser["country_code"] == undefined)
+    if (newUser["country_code"] == undefined || newUser["country_code"].length == 0)
         throw new Error("Country code not provided");
 
-    if (newUser["email"] == undefined)
+    if (newUser["email"] == undefined || newUser["email"].length == 0)
         throw new Error("Email not provided");
 
     // Verify db constraints
@@ -125,6 +125,8 @@ async function addUser(userData)
     newUser["account_creation"] = moment(now).format('YYYY-MM-DD HH:mm:ss').toString();
     newUser["last_login"] = moment(now).format('YYYY-MM-DD HH:mm:ss').toString();
     newUser["birthdate"] = moment(newUser["birthdate"]).format('YYYY-MM-DD HH:mm:ss').toString();
+    if (newUser["birthdate"] == "Invalid date")
+        throw new Error("Invalid birthday");
 
     connection.query(
         `INSERT INTO users(

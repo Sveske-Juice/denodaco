@@ -1,0 +1,13 @@
+POST https://casdnas.duckdns.org/denodaco/api/signup
+Content-Type: application/json
+
+{
+    "username":"bobby",
+    "password":"123",
+    "email":"ccc",
+    "first_name":"efd",
+    "middle_names":"fe",
+    "last_name":"gg",
+    "country_code":"DK",
+    "birthdate":"0003-02-04"
+}
