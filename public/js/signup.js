@@ -1,6 +1,5 @@
 /* Code in control of signing a user up on client side, by requesting the api with user data */
 
-window.onload = init;
 let signupBtn;
 
 function init()
@@ -54,3 +53,5 @@ async function signup()
         throw err;
     }
 }
+
+window.addEventListener("load", init);

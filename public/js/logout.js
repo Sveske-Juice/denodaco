@@ -1,4 +1,4 @@
-window.onload = async () => {
+window.addEventListener("load", async () => {
     try {
         const response = await fetch(API_ENDPOINT + "/logout", )
         if (!response.ok)
@@ -14,4 +14,4 @@ window.onload = async () => {
         alert(err);
         throw err;
     }
-}
+});

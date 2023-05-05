@@ -2,7 +2,6 @@
 by requesting the api with user data. 
 Gets an accesstoken and stores it as a http only cookie */
 
-window.onload = init;
 let signinBtn;
 
 function init()
@@ -42,3 +41,5 @@ async function signin()
         throw err;
     }
 }
+
+window.addEventListener("load", init);

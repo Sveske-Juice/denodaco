@@ -32,7 +32,7 @@ function cleanup()
     return new Promise((resolve) =>
     {
         // Gracefully close db connection
-        connection.end((err) => 
+        connection.end((err) =>
         {
             if (err) throw err;
             logger.logSync(`[DB] Connection gracefully closed`);

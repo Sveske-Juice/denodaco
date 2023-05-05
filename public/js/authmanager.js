@@ -2,12 +2,23 @@
 Also hides signup and login buttons from nav bar if already logged in. Aswell as
 enabling logout button. */
 
-window.onload = init;
 let modal;
 let closeBtn;
 
+function Event() {
+    this.handlers = [];
+}
+
+let onAuthed;
+let onNotAuthed;
+
+
+
 async function init()
 {
+    onAuthed = new Event();
+    onNotAuthed = new Event();
+
     // on login/signup page or something similar
     if (!requiresAuth())
         return;
@@ -52,11 +63,13 @@ function authed()
     logInBtn.style.display = "none";
     signupBtn.style.display = "none";
     logoutBtn.style.display = "block";
+    onAuthed.raise();
 }
 
 // Called on page load if user not logged in
 function notAuthed()
 {
+    onNotAuthed.raise();
     modal = document.querySelector("#not-logged-in-modal");
     closeBtn = document.querySelector("#not-logged-in-modal-close-btn");
 
@@ -64,3 +77,32 @@ function notAuthed()
 
     closeBtn.addEventListener("click", () => { modal.style.display = "none"; });
 }
+
+Event.prototype = {
+    subscribe: function(fn)
+    {
+        // Add subscriber callback function pointer to handlers
+        this.handlers.push(fn);
+    },
+
+    unsubscribe: function(fn)
+    {
+        this.handlers = this.handlers.filter(
+            function (item) {
+                if (item !== fn) {
+                    return item;
+                }
+            }
+        );
+    },
+
+    raise: function(data, thisObj)
+    {
+        let scope = thisObj || window;
+        this.handlers.forEach(function(handler) {
+            handler.call(scope, data);
+        })
+    }
+}
+
+window.addEventListener("load", init);

@@ -25,7 +25,7 @@ function verifyToken(req, res, next)
             denyToken("Invalid token", res);
             return;
         }
-        res.locals.jwt = userInfo; // Give next middleware access to decoded token
+        res.locals.userInfo = userInfo; // Give next middleware access to decoded token
         next();
     });
 }
