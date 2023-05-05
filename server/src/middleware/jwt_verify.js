@@ -37,6 +37,9 @@ function requiresAuthentication(req)
 
     if (req.path == config.serverRoot() + "/api/signup")
         return false;
+
+    if (req.path == config.serverRoot() + "/api/logout")
+        return false;
  
     const seperated = req.path.split('.');
     if (seperated.length == 2)

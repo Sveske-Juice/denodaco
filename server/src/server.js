@@ -10,6 +10,7 @@ const logger      = require("./logger.js");
 // middleware
 const verifyJWT   = require("./middleware/jwt_verify");
 const login       = require("./middleware/login"); 
+const logout       = require("./middleware/logout"); 
 const signup       = require("./middleware/signup"); 
 
 const app = express();
@@ -30,6 +31,7 @@ app.use(verifyJWT);
 
 app.get(config.serverRoot() + "/api/pollauth", (req, res) => { res.sendStatus(200); });
 
+app.get(config.serverRoot() + "/api/logout", logout);
 app.post(config.serverRoot() + "/api/login", login);
 app.post(config.serverRoot() + "/api/signup", signup);
 
