@@ -44,6 +44,28 @@ function cleanup()
 
 // HELPER METHODS FOR DB HANDLING
 
+function getUser(username)
+{
+    return new Promise((resolve, reject) => {
+        if (username == undefined || username.length == 0)
+        {
+            return reject(new Error("No username specified"));
+        }
+        
+        const safeUsername = mysql.escape(username);
+    
+        // TODO only get necsesary data 
+    
+        connection.query(
+        `SELECT * FROM users
+        WHERE username = ${safeUsername};`, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        });
+
+    });
+}
+
 async function addUser(userData)
 {
     let newUser = userData;
@@ -143,5 +165,6 @@ module.exports =
 {
     init,
     cleanup,
+    getUser,
     addUser,
 }
