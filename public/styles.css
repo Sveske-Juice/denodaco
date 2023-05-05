@@ -16,7 +16,7 @@ form {
     border: none;
 }
 
-input[type=username], input[type=password] {
+.login-background > input {
     width: 100%;
     margin: 8px 0;
     padding: 12px 20px;

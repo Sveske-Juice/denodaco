@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title> Denodaco - Sign up </title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="js/config.js"></script>
+        <script src="js/signup.js"></script>
+    </head>
+    <body>
+        <!-- Nav bar -->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="users.html">Users</a></li>
+            <li><a href="about.html">About</a></li>
+            <li style="float:right"><a href="profile.html">Profile</a></li>
+            <li class="nav-button" style="float:right"><a href="login.html">Sign in</a></li>
+            <li class="nav-button" style="float:right"><a href="signup.html">Sign up</a></li>
+        </ul>
+        <center> <h1> Signup for denodaco </h1> </center>
+        <div class="login-background">
+            <label>Username : </label>
+            <input id="username" type="username" placeholder="Enter Username" required>
+
+            <label>Password : </label>
+            <input id="password" type="password" placeholder="Enter Password" required>
+            
+            <label>Email : </label>
+            <input id="email" type="email" placeholder="Enter your email" required>
+
+            <label>First name : </label>
+            <input id="first_name" type="text" placeholder="Enter your first name" required>
+            
+            <label>Middle names : </label>
+            <input id="middle_names" type="text" placeholder="Enter your middle name(s)">
+
+            <label>Last name : </label>
+            <input id="last_name" type="text" placeholder="Enter your last name" required>
+
+            <label>Country code (Max two letter: ex: DK or US etc.) : </label>
+            <input id="country_code" type="text" placeholder="Enter your country code" required>
+
+            <label>birthdate : </label>
+            <input id="birthdate" type="date" required>
+
+            <button id="signup-btn" type="submit">Signup</button>
+        </div>
+
+    </body>
+</html>

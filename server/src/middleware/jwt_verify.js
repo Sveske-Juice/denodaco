@@ -50,6 +50,9 @@ function requiresAuthentication(req)
 {
     if (req.path == config.serverRoot() + "/api/login")
         return false;
+
+    if (req.path == config.serverRoot() + "/api/signup")
+        return false;
     
     return true;
 }

@@ -9,6 +9,7 @@ const logger      = require("./logger.js");
 // middleware
 const verifyJWT   = require("./middleware/jwt_verify");
 const login       = require("./middleware/login"); 
+const signup       = require("./middleware/signup"); 
 
 const app = express();
 const port = 3500;
@@ -31,6 +32,7 @@ app.get(config.serverRoot() + "/s", (req, res, next) =>
 });
 
 app.post(config.serverRoot() + "/api/login", login);
+app.post(config.serverRoot() + "/api/signup", signup);
 
 
 process.on('SIGINT', () =>
