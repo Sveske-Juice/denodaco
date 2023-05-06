@@ -1,7 +1,9 @@
 const crypto = require("crypto");
 const argon2 = require("argon2")
+const fs = require("fs");
 const database = require("../database")
 const logger = require("../logger");
+const config = require("../config");
 
 async function signup(req, res)
 {
@@ -26,13 +28,15 @@ async function signup(req, res)
     const saltedPass = userData["password"] + salt;
 
     userData["salt"] = salt;
+    const username = userData["username"];
     argon2.hash(saltedPass).then((hash) => {
         userData["hash"] = hash;
 
-        database.addUser(userData).then(() => {
-            res.sendStatus(200);
-            logger.log(`New user: ${userData["username"]} registered!`);
-            return;
+        database.addUser(userData).then((result) => {
+            logger.log(`New user: ${username} registered!`);
+ 
+            // Set up new user
+            setupUser(username, req, res);
         }).catch((err) => {
             if (err instanceof Error)
             {
@@ -47,6 +51,27 @@ async function signup(req, res)
             throw err;
         });
     }).catch((err) => {
+        throw err;
+    });
+}
+
+function setupUser(username, req, res)
+{
+    logger.log(`Setting up new user ${username}`);
+    database.getUser(username)
+    .then((result) => {
+        result = result[0];
+        // Create default avatar
+        const avatarPath = config.uploadsPath() + `/${result["id"]}`;
+        if (!fs.existsSync(avatarPath))
+        {
+            fs.mkdir(avatarPath, {recursive: true}, (err) => {
+                if (err) throw err;
+                res.sendStatus(200);
+            });
+        }
+    })
+    .catch((err) => {
         throw err;
     });
 }

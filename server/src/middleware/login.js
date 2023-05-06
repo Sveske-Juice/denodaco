@@ -74,7 +74,9 @@ async function login(req, res)
 function createAccessToken(user)
 {
     const payload = {
-        "username": user["username"]
+        "username": user["username"],
+        "has_profile_picture": user["has_profile_picture"],
+        "user_id": user["id"],
     }
 
     return jwt.sign(payload, process.env.JWT_SECRET);

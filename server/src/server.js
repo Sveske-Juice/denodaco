@@ -14,6 +14,7 @@ const logout        = require("./middleware/logout");
 const signup        = require("./middleware/signup");
 const getProfileData= require("./middleware/getProfileData");
 const updateProfile = require("./middleware/updateProfile");
+const avatar = require("./middleware/avatar");
 
 const app = express();
 const port = 3500;
@@ -40,6 +41,8 @@ app.post(config.serverRoot() + "/api/signup", signup);
 
 app.post(config.serverRoot() + "/api/update_profile", updateProfile);
 app.get(config.serverRoot() + "/api/get_profile_data", getProfileData);
+
+app.get(config.serverRoot() + "/api/avatar", avatar);
 
 // Error handling
 app.use((err, req, res, next) => {

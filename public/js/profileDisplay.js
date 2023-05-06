@@ -30,6 +30,7 @@ function init()
 
 async function displayProfileSettings()
 {
+    updateAvatar();
     try {
         // Send GET req to api. access token stores username and will be sent along with it.
         const response = await fetch(API_ENDPOINT + "/get_profile_data", {
@@ -97,4 +98,32 @@ async function updateSettings()
     }
 }
 
+
+async function updateAvatar()
+{
+    try
+    {
+        const response = await fetch(API_ENDPOINT + "/avatar", {
+            method: "GET"
+        });
+
+        if (!response.ok)
+        {
+            alert(response.statusText);
+            return;
+        }
+
+        const rawImg = await response.blob();
+        const imgObjUrl = URL.createObjectURL(rawImg);
+
+        const imageHolder = document.querySelector("#avatar");
+        imageHolder.src = imgObjUrl;
+        document.body.append(imageHolder);
+    }
+    catch (err)
+    {
+        alert(err);
+        throw err;
+    }
+}
 window.addEventListener("load", init);
