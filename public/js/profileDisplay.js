@@ -152,7 +152,7 @@ async function updateAvatar()
     }
     catch (err)
     {
-        alert(err);
+        alert(response.statusText);
         throw err;
     }
 }

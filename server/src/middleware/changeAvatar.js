@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
 const logger = require("../logger");
 const config = require("../config");
@@ -8,18 +9,57 @@ function changeAvatar(req, res)
 {
     if (!req.files || Object.keys(req.files).length === 0)
     {
-        return res.status(400).send('No files were uploaded.');
+        res.statusMessage = "No files were uploaded.";
+        res.sendStatus(400);
+        return;
     }
 
     let avatar = req.files.avatar;
 
     if (avatar == undefined)
     {
-        return res.status(400).send("Uploaded file must be named 'avatar'");
+        res.statusMessage = "Uploaded file must be named 'avatar'";
+        res.sendStatus(400);
+        return;
     }
     const userID = res.locals.userInfo["user_id"];
     const extension = avatar.name.split('.')[1];
+
+    if (extension == undefined)
+    {
+        res.statusMessage = "Avatar needs to have an extension";
+        res.sendStatus(400);
+        return;
+    }
+
+    const image = avatar.mimetype.split('/')[0] == "image" ? true : false;
+    if (!image)
+    {
+        res.statusMessage = `Avatar needs to be an image, but a ${avatar.mimetype} file was given`;
+        res.sendStatus(400)
+        return;
+    }
+
+    logger.log(`mimetype: ${avatar.mimetype}`);
+
     const avatarPath = config.uploadsPath() + `/${userID}/avatar.${extension}`;
+
+    // Remove old avatar
+    // Gets all file in user's upload with 'avatar' in name
+    const avatarImgs = fs.readdirSync(config.uploadsPath() + `/${userID}`)
+    .filter((fileName) => {
+        let splitted = fileName.split('.');
+        if (splitted == undefined || splitted.length == 0)
+            return false;
+        if (splitted[0] == "avatar")
+            return splitted[0];
+    });
+
+    // remove all the avatar images
+    avatarImgs.forEach((file) => {
+        fs.rmSync(config.uploadsPath() + `/${userID}/${file}`);
+    })
+
     avatar.mv(avatarPath, (err) => {
         if (err)
         {
