@@ -13,6 +13,7 @@ const login         = require("./middleware/login");
 const logout        = require("./middleware/logout"); 
 const signup        = require("./middleware/signup");
 const getProfileData= require("./middleware/getProfileData");
+const updateProfile = require("./middleware/updateProfile");
 
 const app = express();
 const port = 3500;
@@ -37,7 +38,16 @@ app.get(config.serverRoot() + "/api/logout", logout);
 app.post(config.serverRoot() + "/api/login", login);
 app.post(config.serverRoot() + "/api/signup", signup);
 
+app.post(config.serverRoot() + "/api/update_profile", updateProfile);
 app.get(config.serverRoot() + "/api/get_profile_data", getProfileData);
+
+// Error handling
+app.use((err, req, res, next) => {
+  logger.log(`[ERR]: ${err}`);
+  if (err instanceof SyntaxError)
+    return res.status(400).send("Invalid data");
+  res.status(500).send(`Server error: ${err}`);
+});
 
 
 process.on('SIGINT', () =>

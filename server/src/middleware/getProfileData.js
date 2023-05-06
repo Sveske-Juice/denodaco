@@ -3,7 +3,6 @@ const database = require("../database");
 
 function getProfileData(req, res)
 {
-    logger.log(res.locals.userInfo);
     const username = res.locals.userInfo["username"];
     logger.log(`Getting userinformation for '${username}'...`);
     database.getUser(username)

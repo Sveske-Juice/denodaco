@@ -8,6 +8,7 @@ let pAccountCreation;
 let pLastLogin;
 let pBiography;
 let pEmail;
+let bUpdateSettingsBtn;
 
 function init()
 {
@@ -21,7 +22,9 @@ function init()
     pLastLogin = document.querySelector("#last-login");
     pBiography = document.querySelector("#biography");
     pEmail = document.querySelector("#email");
+    bUpdateSettingsBtn = document.querySelector("#update-profile-btn");
     
+    bUpdateSettingsBtn.addEventListener("click", updateSettings);
     onAuthed.subscribe(displayProfileSettings);
 }
 
@@ -37,17 +40,55 @@ async function displayProfileSettings()
         
         // Set data
         pUsername.textContent = data["username"];
-        pFirstName.textContent = data["first_name"];
-        pMiddleNames.textContent = data["middle_names"];
-        pLastName.textContent = data["last_name"];
-        pCountryCode.textContent = data["country_code"];
-        pBirthdate.textContent = data["birthdate"];
-        pAccountCreation.textContent = data["account_creation"];
         pLastLogin.textContent = data["last_login"];
-        pEmail.textContent = data["email"];
+        pAccountCreation.textContent = data["account_creation"];
+
+        pFirstName.value = data["first_name"];
+        pMiddleNames.value = data["middle_names"];
+        pLastName.value = data["last_name"];
+        pBirthdate.valueAsDate = new Date(data["birthdate"]);
+        pCountryCode.value = data["country_code"];
+        pEmail.value = data["email"];
 
         if (data["biography"])
             pBiography.textContent = data["biography"];
+    }
+    catch (err)
+    {
+        alert(err);
+        throw err;
+    }
+}
+
+async function updateSettings()
+{
+    const data = {
+        "first_name": pFirstName.value,
+        "middle_names": pMiddleNames.value,
+        "last_name": pLastName.value,
+        "birthdate": pBirthdate.value,
+        "country_code": pCountryCode.value,
+        "email": pEmail.value,
+        "biography": pBiography.textContent,
+    };
+
+    try {
+        const response = await fetch(API_ENDPOINT + "/update_profile", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok)
+        {
+            alert(response.statusText);
+            return;
+        }
+
+        alert("Success, your settings was updated.");
+        displayProfileSettings(); // Fetch new settings and update ui
     }
     catch (err)
     {

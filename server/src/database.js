@@ -65,6 +65,58 @@ function getUser(username)
     });
 }
 
+function alterUser(username, modifiedUser)
+{
+    return new Promise((resolve, reject) => {
+        if (username == undefined || username.length == 0)
+        {
+            return reject(new Error("No username specified"));
+        }
+
+        username = mysql.escape(username);
+
+        if (modifiedUser["first_name"].length > 255)
+            throw new Error("First name to long");
+
+        if (modifiedUser["middle_names"].length > 255)
+            throw new Error("Middle names to long");
+
+        if (modifiedUser["last_name"].length > 255)
+            throw new Error("Last name to long");
+
+        if (modifiedUser["country_code"].length > 2)
+            throw new Error("Country code to long");
+
+        if (modifiedUser["email"].length > 255)
+            throw new Error("Email to long");
+            
+        modifiedUser["first_name"] = mysql.escape(modifiedUser["first_name"]);
+        modifiedUser["middle_names"] = mysql.escape(modifiedUser["middle_names"]);
+        modifiedUser["last_name"] = mysql.escape(modifiedUser["last_name"]);
+        modifiedUser["country_code"] = mysql.escape(modifiedUser["country_code"]);
+        modifiedUser["birthdate"] = moment(modifiedUser["birthdate"]).format("YYYY-MM-DD HH:mm:ss");
+        modifiedUser["email"] = mysql.escape(modifiedUser["email"]);
+        modifiedUser["biography"] = mysql.escape(modifiedUser["biography"]);
+
+        if (modifiedUser["birthdate"] == "Invalid date")
+            throw new Error("Invalid birthday");
+
+        connection.query(
+            `UPDATE users
+            SET first_name = ${modifiedUser["first_name"]},
+            middle_names = ${modifiedUser["middle_names"]},
+            last_name = ${modifiedUser["last_name"]},
+            country_code = ${modifiedUser["country_code"]},
+            birthdate = '${modifiedUser["birthdate"]}',
+            email = ${modifiedUser["email"]},
+            biography = ${modifiedUser["biography"]}
+            WHERE username = ${username};`, (err, result) => {
+                if (err) return reject(err);
+                resolve(result);
+        });
+    });
+}
+
 async function addUser(userData)
 {
     let newUser = userData;
@@ -168,4 +220,5 @@ module.exports =
     cleanup,
     getUser,
     addUser,
+    alterUser,
 }

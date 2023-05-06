@@ -141,3 +141,7 @@ li a:hover {
 label {
     font-weight: bold;
 }
+
+input {
+    color: black;
+}
