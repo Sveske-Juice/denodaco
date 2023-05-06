@@ -216,6 +216,22 @@ async function addUser(userData)
     });
 }
 
+// PP: profile picture
+function SetUserHasPP(userid, hasPP)
+{
+    return new Promise((resolve, reject) => {
+        const val = hasPP == true ? 1 : 0;
+        connection.query(
+            `UPDATE users
+            SET has_profile_picture = ${val}
+            WHERE id = ${userid}`
+        , (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 module.exports = 
 {
     init,
@@ -223,4 +239,5 @@ module.exports =
     getUser,
     addUser,
     alterUser,
+    SetUserHasPP,
 }

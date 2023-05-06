@@ -9,16 +9,26 @@ function avatar(req, res)
         return res.redirect(config.serverRoot() + "/uploads/default_avatar.jpg");
     }
 
-    let avatar = fs.readdirSync(config.uploadsPath() + `/${res.locals.userInfo["username"]}`)
+    const userID = res.locals.userInfo["user_id"];
+    let avatar = fs.readdirSync(config.uploadsPath() + `/${userID}`)
     .filter((filename) => {
         let splitted = filename.split('.');
         if (splitted == undefined || splitted.length == 0)
             return false;
         if (splitted[0] == "avatar")
-            return true;
+            return splitted[0];
     });
-    logger.log(`Returning avatar at: ${avatar}`);
-    // res.redirect(config.serverRoot() + `/uploads/${res.locals.userInfo["username"]}/avatar`);
+    logger.log(`Returning avatar at: ${avatar[0]}`);
+    
+    if (avatar == undefined || avatar.length == 0)
+    {
+        logger.log(`[WARN] Could not find avatar, when user is set to have a custom avatar! using defualt instead, but this is a bug!`);
+        return;
+    }
+    
+    const fileName = avatar[0];
+
+    res.redirect(config.serverRoot() + `/uploads/${userID}/${fileName}`);
 }
 
 module.exports = avatar;

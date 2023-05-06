@@ -9,6 +9,7 @@ let pLastLogin;
 let pBiography;
 let pEmail;
 let bUpdateSettingsBtn;
+let bUpdateAvatar;
 
 function init()
 {
@@ -23,14 +24,16 @@ function init()
     pBiography = document.querySelector("#biography");
     pEmail = document.querySelector("#email");
     bUpdateSettingsBtn = document.querySelector("#update-profile-btn");
-    
+    bUpdateAvatar = document.querySelector("#upload-avatar-btn");
+
     bUpdateSettingsBtn.addEventListener("click", updateSettings);
+    bUpdateAvatar.addEventListener("click", updateAvatar);
     onAuthed.subscribe(displayProfileSettings);
 }
 
 async function displayProfileSettings()
 {
-    updateAvatar();
+    displayAvatar();
     try {
         // Send GET req to api. access token stores username and will be sent along with it.
         const response = await fetch(API_ENDPOINT + "/get_profile_data", {
@@ -99,7 +102,7 @@ async function updateSettings()
 }
 
 
-async function updateAvatar()
+async function displayAvatar()
 {
     try
     {
@@ -118,7 +121,6 @@ async function updateAvatar()
 
         const imageHolder = document.querySelector("#avatar");
         imageHolder.src = imgObjUrl;
-        document.body.append(imageHolder);
     }
     catch (err)
     {
@@ -126,4 +128,33 @@ async function updateAvatar()
         throw err;
     }
 }
+
+async function updateAvatar()
+{
+    const formData = new FormData();
+    const fileField = document.querySelector("#avatar-upload");
+
+    formData.append("avatar", fileField.files[0]);
+    try
+    {
+        const response = await fetch(API_ENDPOINT + "/change_avatar", {
+            method: "POST",
+            body: formData,
+        });
+        if (!response.ok)
+        {
+            alert(response.statusText);
+            return;
+        }
+        
+        alert("Success");
+        displayAvatar();
+    }
+    catch (err)
+    {
+        alert(err);
+        throw err;
+    }
+}
+
 window.addEventListener("load", init);

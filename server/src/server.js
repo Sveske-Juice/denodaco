@@ -14,7 +14,9 @@ const logout        = require("./middleware/logout");
 const signup        = require("./middleware/signup");
 const getProfileData= require("./middleware/getProfileData");
 const updateProfile = require("./middleware/updateProfile");
-const avatar = require("./middleware/avatar");
+const avatar        = require("./middleware/avatar");
+const changeAvatar  = require("./middleware/changeAvatar");
+const fileUpload    = require("express-fileupload");
 
 const app = express();
 const port = 3500;
@@ -31,6 +33,7 @@ app.use((req, res, next) => {logger.logRequest(req); next(); });
 app.use(express.json());
 app.use(cookieparser());
 app.use(verifyJWT);
+app.use(fileUpload({limits: {fieldSize: process.env.MAX_UPLOAD_SIZE*1024*1024}, }));
 
 app.get(config.serverRoot() + "/api/pollauth", (req, res) => { res.sendStatus(200); });
 
@@ -43,6 +46,7 @@ app.post(config.serverRoot() + "/api/update_profile", updateProfile);
 app.get(config.serverRoot() + "/api/get_profile_data", getProfileData);
 
 app.get(config.serverRoot() + "/api/avatar", avatar);
+app.post(config.serverRoot() + "/api/change_avatar", changeAvatar);
 
 // Error handling
 app.use((err, req, res, next) => {
@@ -50,6 +54,7 @@ app.use((err, req, res, next) => {
   if (err instanceof SyntaxError)
     return res.status(400).send("Invalid data");
   res.status(500).send(`Server error: ${err}`);
+  throw err;
 });
 
 
