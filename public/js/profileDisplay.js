@@ -148,7 +148,7 @@ async function updateAvatar()
         }
         
         alert("Success");
-        displayAvatar();
+        displayAvatar(); // New avatar set - fetch and display it
     }
     catch (err)
     {
