@@ -43,6 +43,7 @@ function displayUsers(users)
         // Avatar
         const avatarDataCell = document.createElement("td");
         const avatarImg = document.createElement("img");
+        avatarImg.width = "100";
         try { // fetch avatar
             const res = await fetch(API_ENDPOINT + `/avatar?userID=${user["id"]}`, {method: "GET"});
             const rawImg = await res.blob();
@@ -55,6 +56,11 @@ function displayUsers(users)
         userParentContainer.append(avatarDataCell);
 
         // User id
+        const idDataCell = document.createElement("td");
+        const idText = document.createElement("p");
+        idText.textContent = user["id"];
+        idDataCell.append(idText);
+        userParentContainer.append(idDataCell);
 
         // Username
         const usernameDataCell = document.createElement("td");
@@ -62,6 +68,55 @@ function displayUsers(users)
         usernameText.textContent = user["username"];
         usernameDataCell.append(usernameText);
         userParentContainer.append(usernameDataCell);
+        
+        // First name
+        const firstNameDataCell = document.createElement("td");
+        const firstNameText = document.createElement("p");
+        firstNameText.textContent = user["first_name"];
+        firstNameDataCell.append(firstNameText);
+        userParentContainer.append(firstNameDataCell);
+        
+        // Middle names
+        const middleNamesDataCell = document.createElement("td");
+        const middleNamesText = document.createElement("p");
+        middleNamesText.textContent = user["middle_names"];
+        middleNamesDataCell.append(middleNamesText);
+        userParentContainer.append(middleNamesDataCell);
+
+        // Last name
+        const lastNameDataCell = document.createElement("td");
+        const lastNameText = document.createElement("p");
+        lastNameText.textContent = user["last_name"];
+        lastNameDataCell.append(lastNameText);
+        userParentContainer.append(lastNameDataCell);
+
+        // Country Code
+        const ccDataCell = document.createElement("td");
+        const ccText = document.createElement("p");
+        ccText.textContent = user["country_code"];
+        ccDataCell.append(ccText);
+        userParentContainer.append(ccDataCell);
+
+        // Birthdate
+        const birthdateDataCell = document.createElement("td");
+        const birthdateText = document.createElement("p");
+        birthdateText.textContent = user["birthdate"];
+        birthdateDataCell.append(birthdateText);
+        userParentContainer.append(birthdateDataCell);
+
+        // Account creation
+        const acDataCell = document.createElement("td");
+        const acText = document.createElement("p");
+        acText.textContent = user["account_creation"];
+        acDataCell.append(acText);
+        userParentContainer.append(acDataCell);
+
+        // Email
+        const emailDataCell = document.createElement("td");
+        const emailText = document.createElement("p");
+        emailText.textContent = user["email"];
+        emailDataCell.append(emailText);
+        userParentContainer.append(emailDataCell);
     });
 
     container.style.display = "block";
