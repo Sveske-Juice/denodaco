@@ -20,7 +20,6 @@ function avatar(req, res)
         if (splitted[0] == "avatar")
             return splitted[0];
     });
-    logger.log(`Returning avatar at: ${avatar[0]}`);
     
     if (avatar == undefined || avatar.length == 0)
     {
@@ -51,7 +50,6 @@ function ownAvatar(req, res)
         if (splitted[0] == "avatar")
             return splitted[0];
     });
-    logger.log(`Returning avatar at: ${avatar[0]}`);
     
     if (avatar == undefined || avatar.length == 0)
     {
