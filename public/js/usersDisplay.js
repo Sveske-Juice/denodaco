@@ -117,6 +117,13 @@ function displayUsers(users)
         emailText.textContent = user["email"];
         emailDataCell.append(emailText);
         userParentContainer.append(emailDataCell);
+
+        // Bio
+        const bioDataCell = document.createElement("td");
+        const bioText = document.createElement("textarea");
+        bioText.textContent = user["biography"];
+        bioDataCell.append(bioText);
+        userParentContainer.append(bioDataCell);
     });
 
     container.style.display = "block";

@@ -55,7 +55,7 @@ async function displayProfileSettings()
         pEmail.value = data["email"];
 
         if (data["biography"])
-            pBiography.textContent = data["biography"];
+            pBiography.value = data["biography"];
     }
     catch (err)
     {
@@ -73,7 +73,7 @@ async function updateSettings()
         "birthdate": pBirthdate.value,
         "country_code": pCountryCode.value,
         "email": pEmail.value,
-        "biography": pBiography.textContent,
+        "biography": pBiography.value,
     };
 
     try {
