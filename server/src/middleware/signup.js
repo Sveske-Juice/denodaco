@@ -38,6 +38,12 @@ async function signup(req, res)
             // Set up new user
             setupUser(username, req, res);
         }).catch((err) => {
+            if (err.code != undefined && err.code == "ER_DUP_ENTRY")
+            {
+                res.statusMessage = "Username already taken!";
+                res.sendStatus(400);
+                return;
+            }
             if (err instanceof Error)
             {
                 res.statusMessage = err;

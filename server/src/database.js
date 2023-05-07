@@ -232,6 +232,18 @@ function SetUserHasPP(userid, hasPP)
     });
 }
 
+function getAllUsersExcept(userid)
+{
+    return new Promise((resolve, reject) => {
+        connection.query(
+        `SELECT * FROM users
+        WHERE id != ${userid};`, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 module.exports = 
 {
     init,
@@ -240,4 +252,5 @@ module.exports =
     addUser,
     alterUser,
     SetUserHasPP,
+    getAllUsersExcept,
 }

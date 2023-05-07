@@ -1,4 +1,5 @@
 require("dotenv").config({path: __dirname + "/.env"}); // Load .env variables
+const fileUpload    = require("express-fileupload");
 
 const config      = require("./config");
 const database    = require("./database");
@@ -16,7 +17,7 @@ const getProfileData= require("./middleware/getProfileData");
 const updateProfile = require("./middleware/updateProfile");
 const avatar        = require("./middleware/avatar");
 const changeAvatar  = require("./middleware/changeAvatar");
-const fileUpload    = require("express-fileupload");
+const getAllUsers    = require("./middleware/getAllUsers");
 
 const app = express();
 const port = 3500;
@@ -47,6 +48,7 @@ app.get(config.serverRoot() + "/api/get_profile_data", getProfileData);
 
 app.get(config.serverRoot() + "/api/avatar", avatar);
 app.post(config.serverRoot() + "/api/change_avatar", changeAvatar);
+app.get(config.serverRoot() + "/api/get_all_users", getAllUsers);
 
 // Error handling
 app.use((err, req, res, next) => {

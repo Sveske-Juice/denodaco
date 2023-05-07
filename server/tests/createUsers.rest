@@ -1,0 +1,29 @@
+POST https://casdnas.duckdns.org/denodaco/api/signup
+Content-Type: application/json
+
+{
+  "username": "john_the_cool",
+  "password": "hej",
+  "email": "johny@mail.com",
+  "first_name": "John",
+  "middle_names": "Clark",
+  "last_name": "Doe",
+  "country_code": "DK",
+  "birthdate": "1999-01-05"
+}
+
+###
+POST https://casdnas.duckdns.org/denodaco/api/signup
+Content-Type: application/json
+
+{
+  "username": "jane_nice",
+  "password": "hej",
+  "email": "jane@mail.com",
+  "first_name": "Jane",
+  "middle_names": "Qubit",
+  "last_name": "Doe",
+  "country_code": "US",
+  "birthdate": "1997-04-07"
+}
+
