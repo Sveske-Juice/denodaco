@@ -236,7 +236,7 @@ function getAllUsersExcept(userid)
 {
     return new Promise((resolve, reject) => {
         connection.query(
-        `SELECT * FROM users
+        `SELECT id, username, first_name, middle_names, last_name, country_code, birthdate, account_creation, biography, email FROM users
         WHERE id != ${userid};`, (err, result) => {
             if (err) return reject(err);
             resolve(result);

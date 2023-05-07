@@ -1,4 +1,4 @@
-async function displayUsers()
+async function updateUsers()
 {
     try
     {
@@ -13,7 +13,7 @@ async function displayUsers()
         }
 
         const users = await response.json();
-        alert(JSON.stringify(users));
+        displayUsers(users);
     }
     catch(err)
     {
@@ -22,5 +22,50 @@ async function displayUsers()
     }
 }
 
+function displayUsers(users)
+{
+    const container = document.querySelector("#users-table");
 
-window.addEventListener("load", () => {onAuthed.subscribe(displayUsers); });
+    if (users == undefined || users.length == 0)
+    {
+        const text = document.createElement("p");
+        text.textContent = "No users other than you registered";
+        container.append(text);
+        return;
+    }
+
+    users.forEach(async function(user)
+    {
+        // Create new row: container only for this user
+        const userParentContainer = document.createElement("tr");
+        container.append(userParentContainer);
+        
+        // Avatar
+        const avatarDataCell = document.createElement("td");
+        const avatarImg = document.createElement("img");
+        try { // fetch avatar
+            const res = await fetch(API_ENDPOINT + `/avatar?userID=${user["id"]}`, {method: "GET"});
+            const rawImg = await res.blob();
+            const imgObjUrl = URL.createObjectURL(rawImg);
+    
+            avatarImg.src = imgObjUrl;
+        } catch(err) { throw err; }
+
+        avatarDataCell.append(avatarImg);
+        userParentContainer.append(avatarDataCell);
+
+        // User id
+
+        // Username
+        const usernameDataCell = document.createElement("td");
+        const usernameText = document.createElement("p");
+        usernameText.textContent = user["username"];
+        usernameDataCell.append(usernameText);
+        userParentContainer.append(usernameDataCell);
+    });
+
+    container.style.display = "block";
+}
+
+
+window.addEventListener("load", () => {onAuthed.subscribe(updateUsers); });

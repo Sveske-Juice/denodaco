@@ -4,7 +4,7 @@ const database = require("../database");
 function getAllUsers(req, res)
 {
     const userID = res.locals.userInfo["user_id"];
-    logger.log(`${res.locals.userInfo["username"]} (id: ${userID}) requested all to dump all users.`);
+    logger.log(`${res.locals.userInfo["username"]} (id: ${userID}) requested to dump all users.`);
     database.getAllUsersExcept(userID)
     .then((result) => {
         res.json(result);

@@ -27,3 +27,17 @@ Content-Type: application/json
   "birthdate": "1997-04-07"
 }
 
+###
+POST https://casdnas.duckdns.org/denodaco/api/signup
+Content-Type: application/json
+
+{
+  "username": "bob",
+  "password": "hej",
+  "email": "bob@mail.com",
+  "first_name": "Bob",
+  "middle_names": "Tess",
+  "last_name": "Tickle",
+  "country_code": "GB",
+  "birthdate": "1988-04-07"
+}
