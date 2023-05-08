@@ -71,6 +71,11 @@ async function uploadData()
             alert(response.statusText);
             return;
         }
+
+        if (response.status == 401)
+        {
+            location.href = BASE_URL + "/login.html";
+        }
     }
     catch(err) {
         alert(err);

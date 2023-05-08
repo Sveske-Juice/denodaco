@@ -12,8 +12,6 @@ function Event() {
 let onAuthed;
 let onNotAuthed;
 
-
-
 async function init()
 {
     onAuthed = new Event();
