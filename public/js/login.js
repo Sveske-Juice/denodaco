@@ -2,6 +2,8 @@
 by requesting the api with user data. 
 Gets an accesstoken and stores it as a http only cookie */
 
+import { BASE_URL, API_ENDPOINT } from "./modules/config.js";
+
 let signinBtn;
 
 function init()

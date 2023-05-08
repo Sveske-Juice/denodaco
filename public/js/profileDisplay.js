@@ -33,7 +33,7 @@ function init()
 
 async function displayProfileSettings()
 {
-    displayAvatar();
+
     try {
         // Send GET req to api. access token stores username and will be sent along with it.
         const response = await fetch(API_ENDPOINT + "/get_profile_data", {

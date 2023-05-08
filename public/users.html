@@ -3,13 +3,11 @@
     <head>
         <title> Denodaco - Profile </title>
         <link rel="stylesheet" href="styles.css">
-        <script src="js/config.js"></script>
-        <script src="js/authmanager.js"></script>
-        <script src="js/usersDisplay.js"></script>
+        <script type="module" src="js/usersDisplay.js"></script>
     </head>
     <body>
         <!-- Nav bar -->
-        <ul>
+        <ul class="nav-bar">
             <li><a href="index.html">Home</a></li>
             <li><a class="active" href="users.html">Users</a></li>
             <li><a href="about.html">About</a></li>
@@ -33,30 +31,9 @@
         </div>
     
         <!-- Users table -->
-        <center><table id="users-table" style="display: none;">
-            <!-- Headlines -->
-            <tr>
-                <th>Avatar</th>
-                <th>User id</th>
-                <th>Username</th>
-                <th>First name</th>
-                <th>Middle names</th>
-                <th>Last name</th>
-                <th>Country Code</th>
-                <th>Birthdate</th>
-                <th>Account creation</th>
-                <th>email</th>
-                <th>biography</th>
+        <ul id="users-parent-container">
 
-
-            </tr>
-        </table></center>
-
-        <div class="user-container">
-            <img width="50px" src="https://casdnas.duckdns.org/denodaco/uploads/default_avatar.jpg" alt="">
-            <span class="First name"></span>
-            <span class="Last name"></span>
-        </div>
+        </ul>
 
     </body>
     </html>

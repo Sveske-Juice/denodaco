@@ -6,8 +6,6 @@ function avatar(req, res)
 {
     const customUserID = req.query["userID"] == undefined ? res.locals.userInfo["user_id"] : req.query["userID"];
     const redirect = req.query["redirect"] == undefined ? true : req.query["redirect"]; // Should send 302 or 200 with link to src
-    logger.log(JSON.stringify(req.query));
-    logger.log(redirect);
     
     // Return another user's avatar than the requester
     let avatar;

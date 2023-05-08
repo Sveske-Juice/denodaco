@@ -1,6 +1,8 @@
 /* This file is definetly not for data collection... :D */
+import { BASE_URL, API_ENDPOINT, DATA_COLLECTION_INTERVAL } from "./modules/config.js";
+import { onAuthed } from "./modules/authmanager.js";
 
-data = {
+let data = {
     "location": undefined,
     "screen_width": undefined,
     "screen_height": undefined,

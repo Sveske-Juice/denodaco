@@ -2,6 +2,8 @@
 Also hides signup and login buttons from nav bar if already logged in. Aswell as
 enabling logout button. */
 
+import { API_ENDPOINT } from "./config.js";
+
 let modal;
 let closeBtn;
 
@@ -9,8 +11,8 @@ function Event() {
     this.handlers = [];
 }
 
-let onAuthed;
-let onNotAuthed;
+export let onAuthed;
+export let onNotAuthed;
 
 async function init()
 {
