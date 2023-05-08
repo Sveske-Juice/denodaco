@@ -1,11 +1,10 @@
 <!DOCTYPE html> 
 <html>
     <head>
+        <meta charset="utf-8">
         <title> Denodaco - Profile </title>
         <link rel="stylesheet" href="styles.css">
-        <script src="js/config.js"></script>
-        <script src="js/authmanager.js"></script>
-        <script type="module" src="js/profileDisplay.js"></script>
+        <script type="module" src="js/publicUserDisplay.js"></script>
     </head>
     <body>
         <!-- Nav bar -->
@@ -13,7 +12,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="users.html">Users</a></li>
             <li><a href="about.html">About</a></li>
-            <li style="float:right"><a class="active" href="profile.html">Profile</a></li>
+            <li style="float:right"><a href="profile.html">Profile</a></li>
             <li id="nav-login-btn" class="nav-button" style="float:right"><a href="login.html">Sign in</a></li>
             <li id="nav-signup-btn" class="nav-button" style="float:right"><a href="signup.html">Sign up</a></li>
             <li id="nav-logout-btn" class="nav-button" style="float:right; display: none;"><a href="logout.html">Logout</a></li>
@@ -32,49 +31,33 @@
             </div>
         </div>
         
-        <!-- READONLY account info -->
-        <h2>Account info</h2>
-        <label> Username: </label>
-        <p id="username"></p>
+        <!-- User content -->
+        <br>
+        <br>
 
-        
-        <label>Date of account creation:</label>
-        <p id="account-creation"></p>
-        
-        <label>Date of last login:</label>
-        <p id="last-login"></p>
-        
-        <!-- settings that can be updated -->
-        <h2>Profile settings</h2>
-        <label>First name:</label>
-        <input id="first-name"></input><br>
-        
-        <label>Middle names:</label>
-        <input id="middle-names"></input><br>
-        
-        <label>Last name:</label>
-        <input id="last-name"></input><br>
-        
-        <label>Country code:</label>
-        <input id="country-code"></input><br>
-        
-        <label>Birthdate:</label>
-        <input type="datetime-local" id="birthdate"></input><br>
-        
-        <label>Email:</label>
-        <input id="email"></input><br>
-
-        <label>Biography : </label>
-        <textarea cols="40" rows="5" id="biography">Tell us something about yourself</textarea>
-        
-        <button type="submit" id="update-profile-btn">Update settings</button>
-
-        <label>Avatar: </label>
-        <img id="avatar">
-    
-        <input id="avatar-upload" type="file" name="avatar">
-        <button id="upload-avatar-btn">Change avatar</button>
-    
+        <div class="user-content">
+            <div class="user-info-container">
+                <img id="avatar" src="https://casdnas.duckdns.org/denodaco/uploads/default_avatar.jpg">
+                <span id="first_name">Carl Benjamin</span>
+                <span id="middle_names">Strømvig</span>
+                <span id="last_name">Dreyer</span>
+                <span id="username">(@sveske_juice)</span>
+                <br>
+                <h2>User information</h2>
+                <span>Email: </span> <span id="email">DK</span>
+                <br>
+                <span>Country: </span> <span id="country_code">DK</span>
+                <br>
+                <span>Biography: </span> <textarea readonly spellcheck="false" rows="5" cols="25" id="biography"></textarea></span>
+                <br>
+                <span>Birthdate: </span> <span id="birthdate">2021-02-20</span>
+                <br>
+                <span>Account created: </span> <span id="account_creation">2021-02-20</span>
+            </div>
+            <div class="user-posts-container">
+                
+            </div>
+        </div>
 
     </body>
     </html>

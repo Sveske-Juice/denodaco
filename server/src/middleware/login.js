@@ -23,7 +23,7 @@ async function login(req, res)
         return;
     }
     
-    database.getUser(username)
+    database.getUser(username, true)
     .then(async function (result)
     {
         // Verify username exists
@@ -62,13 +62,6 @@ async function login(req, res)
     .catch((err) => {
         throw err;
     });
-
-    // const jwtData = {
-    //     "username": username,
-    // }
-
-    // const accessToken = jwt.sign(jwtData, process.env.JWT_SECRET);
-    // res.json({ "accessToken": accessToken});
 }
 
 function createAccessToken(user)
@@ -77,6 +70,7 @@ function createAccessToken(user)
         "username": user["username"],
         "has_profile_picture": user["has_profile_picture"],
         "user_id": user["id"],
+        "is_admin": user["is_admin"],
     }
 
     return jwt.sign(payload, process.env.JWT_SECRET);

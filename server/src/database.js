@@ -43,21 +43,42 @@ function cleanup()
 
 // HELPER METHODS FOR DB HANDLING
 
-function getUser(username)
+function getUser(user, useUsername)
 {
+    if (useUsername)
+    {
+        return new Promise((resolve, reject) => {
+            if (user == undefined)
+            {
+                return reject(new Error("No username specified"));
+            }
+            
+            const safeUsername = mysql.escape(user);
+        
+            // TODO only get necsesary data 
+        
+            connection.query(
+            `SELECT * FROM users
+            WHERE username = ${safeUsername};`, (err, result) => {
+                if (err) return reject(err);
+                resolve(result);
+            });
+    
+        });
+    }
     return new Promise((resolve, reject) => {
-        if (username == undefined || username.length == 0)
+        if (user == undefined)
         {
-            return reject(new Error("No username specified"));
+            return reject(new Error("No userid specified"));
         }
         
-        const safeUsername = mysql.escape(username);
+        const safeUserid = mysql.escape(user);
     
         // TODO only get necsesary data 
     
         connection.query(
         `SELECT * FROM users
-        WHERE username = ${safeUsername};`, (err, result) => {
+        WHERE id = ${safeUserid};`, (err, result) => {
             if (err) return reject(err);
             resolve(result);
         });

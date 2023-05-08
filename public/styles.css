@@ -173,3 +173,26 @@ input {
     margin-left: 10px;
     border-radius: 25px;
 }
+
+/* Public user page. */
+.user-info-container {
+    line-height: 3;
+}
+
+.user-info-container img {
+    vertical-align: middle;
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 25px;
+}
+
+.user-info-container textarea {
+    vertical-align: middle;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
