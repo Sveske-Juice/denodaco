@@ -45,11 +45,9 @@ function displayUsers(users)
         const avatarImg = document.createElement("img");
         avatarImg.width = "100";
         try { // fetch avatar
-            const res = await fetch(API_ENDPOINT + `/avatar?userID=${user["id"]}`, {method: "GET"});
-            const rawImg = await res.blob();
-            const imgObjUrl = URL.createObjectURL(rawImg);
-    
-            avatarImg.src = imgObjUrl;
+            const res = await fetch(API_ENDPOINT + `/avatar?userID=${user["id"]}&redirect=false`, {method: "GET"});
+            const json = await res.json();
+            avatarImg.src = json["src"];
         } catch(err) { throw err; }
 
         avatarDataCell.append(avatarImg);
