@@ -75,6 +75,7 @@ function alterUser(username, modifiedUser)
 
         username = mysql.escape(username);
 
+        // TODO refactor to use db error and catch that, to lazy
         if (modifiedUser["first_name"].length > 255)
             throw new Error("First name to long");
 
@@ -244,6 +245,29 @@ function getAllUsersExcept(userid)
     });
 }
 
+function updateUserdata(userid, userdata)
+{
+    return new Promise((resolve, reject) => {
+        if (userid == undefined)
+        {
+            return reject(new Error("No user id"));
+        }
+
+        if (userdata == undefined)
+        {
+            return reject(new Error("No userdata supplied"));
+        }
+
+        connection.query(
+        `UPDATE users
+        SET user_data = ${mysql.escape(userdata)}
+        WHERE id = ${mysql.escape(userid)}`, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 module.exports = 
 {
     init,
@@ -253,4 +277,5 @@ module.exports =
     alterUser,
     SetUserHasPP,
     getAllUsersExcept,
+    updateUserdata,
 }
