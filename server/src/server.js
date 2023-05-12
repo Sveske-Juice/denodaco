@@ -11,15 +11,15 @@ const userAgent   = require("express-useragent");
 
 // middleware
 const verifyJWT     = require("./middleware/jwt_verify");
-const login         = require("./middleware/login");
-const logout        = require("./middleware/logout"); 
-const signup        = require("./middleware/signup");
-const getProfileData= require("./middleware/getProfileData");
-const updateProfile = require("./middleware/updateProfile");
-const avatar        = require("./middleware/avatar");
-const changeAvatar  = require("./middleware/changeAvatar");
-const getAllUsers   = require("./middleware/getAllUsers");
-const dataCollection= require("./middleware/dataCollection");
+const login         = require("./routes/login");
+const logout        = require("./routes/logout"); 
+const signup        = require("./routes/signup");
+const getProfileData= require("./routes/getProfileData");
+const updateProfile = require("./routes/updateProfile");
+const avatar        = require("./routes/avatar");
+const changeAvatar  = require("./routes/changeAvatar");
+const getAllUsers   = require("./routes/getAllUsers");
+const dataCollection= require("./routes/dataCollection");
 
 const app = express();
 const port = 3500;
