@@ -57,6 +57,8 @@ async function setSettings(userID)
         alert(err);
         throw err;
     }
+
+    console.log(userData);
     
     pUsername.textContent = `(@${userData["username"]})`;
     pFirstName.textContent = `${userData["first_name"]}`;
@@ -68,6 +70,30 @@ async function setSettings(userID)
     tBiography.value = `${userData["biography"]}`;
     pBirthdate.textContent = `${userData["birthdate"]}`;
     pAccountCreation.textContent = `${userData["account_creation"]}`;
+
+    if (userData["is_admin"] == undefined) // User is not an admin skip displaying that
+        return;
+
+    // admin information
+    const adminInfoBox = document.querySelector("#admin-info")
+    adminInfoBox.style.display = "block";
+
+    document.querySelector("#is_admin").textContent = `${userData["is_admin"] == 1 ? true : false}`;
+    document.querySelector("#has_profile_picture").textContent = `${userData["has_profile_picture"] == 1 ? true : false}`;
+    document.querySelector("#last_login").textContent = `${userData["last_login"]}`;
+
+    if (userData["user_data"] == null) // No userdata on user
+        return;
+    
+    const udata = JSON.parse(userData["user_data"]);
+    console.log(udata);
+    document.querySelector("#screen").textContent = `${udata["screen_width"]}x${udata["screen_height"]}`
+    document.querySelector("#page").textContent = `${udata["resolution_width"]}x${udata["resolution_height"]}`
+    document.querySelector("#browser").textContent = `${udata["browser"]} ${udata["user_agent"]["browser"]} (${udata["user_agent"]["source"]})`;
+    document.querySelector("#ip").textContent = `${udata["ip"]}`;
+    document.querySelector("#locale").textContent = `${udata["locale"]}`;
+    document.querySelector("#os").textContent = `${udata["os"]}`;
+
 }
 
 window.addEventListener("load", init);

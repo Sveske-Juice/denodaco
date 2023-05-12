@@ -10,6 +10,7 @@ function getProfileData(req, res)
         requestingUser = false;
     }
 
+    // Can either be a custom user id to get profile data from or from the requesting user
     const userID = requestingUser == true ? res.locals.userInfo["user_id"] : customUserID;
 
     logger.log(`Getting userinformation for id: '${userID}'...`);
@@ -22,7 +23,7 @@ function getProfileData(req, res)
         delete result.salt;
 
         // if the requesting user doesn't have admin rights, then redact semi-sensitive info
-        if (res.locals.userInfo["is_admin"] == false)
+        if (res.locals.userInfo["is_admin"] != 1)
         {
             delete result.is_admin;
             delete result.last_login;
