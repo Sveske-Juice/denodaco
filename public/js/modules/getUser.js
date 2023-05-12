@@ -1,11 +1,17 @@
 import { API_ENDPOINT } from "./config.js";
 
-export function getUser(userID)
+export function getUser(userID = undefined)
 {
     return new Promise(async (resolve, reject) => {
         try
         {
-            const res = await fetch(API_ENDPOINT + `/get_profile_data?userID=${userID}`, {
+            let url = API_ENDPOINT + `/get_profile_data`;
+            if (userID != undefined)
+            {
+                url += `?userID=${userID}`;
+            }
+
+            const res = await fetch(url, {
                 method: "GET",
             });
     

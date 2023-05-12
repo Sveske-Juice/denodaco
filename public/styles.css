@@ -194,3 +194,11 @@ input {
     border: none;
     border-radius: 5px;
 }
+
+button {
+    color: white;
+}
+
+#avatar {
+    width: 250px;
+}

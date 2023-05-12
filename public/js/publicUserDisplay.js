@@ -1,5 +1,6 @@
 import { getUser } from "./modules/getUser.js"
 import { getUserAvatar } from "./modules/displayUser.js"
+import { onAuthed } from "./modules/authmanager.js";
 
 let iAvatar;
 let pUsername;
@@ -36,7 +37,7 @@ function init()
     pBirthdate = document.querySelector("#birthdate");
     pAccountCreation = document.querySelector("#account_creation");
 
-    setSettings(userId);
+    onAuthed.subscribe(() => { setSettings(userId); });
 }
 
 async function setSettings(userID)

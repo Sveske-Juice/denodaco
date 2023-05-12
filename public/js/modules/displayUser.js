@@ -27,11 +27,17 @@ export function displayUser(parent, userdata, clickCallback = null)
     
 }
 
-export function getUserAvatar(userid)
+export function getUserAvatar(userid = undefined)
 {
     return new Promise(async (resolve, reject) => {
+        let url = API_ENDPOINT + `/avatar?redirect=false`;
+        if (userid != undefined)
+        {
+            url += `&userID=${userid}`;
+        }
+
         try {
-            const res = await fetch(API_ENDPOINT + `/avatar?userID=${userid}&redirect=false`);
+            const res = await fetch(url);
             if (!res.ok)
             {
                 alert(`Error occured while trying to get user avatar: HTTP CODE ${res.status} summary: ${res.statusText}`);

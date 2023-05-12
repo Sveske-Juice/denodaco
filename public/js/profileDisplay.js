@@ -1,3 +1,8 @@
+import { getUser } from "./modules/getUser.js"
+import { getUserAvatar } from "./modules/displayUser.js"
+import { onAuthed } from "./modules/authmanager.js";
+import { API_ENDPOINT } from "./modules/config.js";
+
 let pUsername;
 let pFirstName;
 let pMiddleNames;
@@ -10,6 +15,7 @@ let pBiography;
 let pEmail;
 let bUpdateSettingsBtn;
 let bUpdateAvatar;
+let iAvatar;
 
 function init()
 {
@@ -25,6 +31,7 @@ function init()
     pEmail = document.querySelector("#email");
     bUpdateSettingsBtn = document.querySelector("#update-profile-btn");
     bUpdateAvatar = document.querySelector("#upload-avatar-btn");
+    iAvatar = document.querySelector("#avatar");
 
     bUpdateSettingsBtn.addEventListener("click", updateSettings);
     bUpdateAvatar.addEventListener("click", updateAvatar);
@@ -33,14 +40,10 @@ function init()
 
 async function displayProfileSettings()
 {
+    displayAvatar();
 
     try {
-        // Send GET req to api. access token stores username and will be sent along with it.
-        const response = await fetch(API_ENDPOINT + "/get_profile_data", {
-            method: "GET"
-        });
-
-        const data = await response.json();
+        let data = await getUser();
         
         // Set data
         pUsername.textContent = data["username"];
@@ -104,29 +107,12 @@ async function updateSettings()
 
 async function displayAvatar()
 {
-    try
-    {
-        const response = await fetch(API_ENDPOINT + "/avatar", {
-            method: "GET"
-        });
-
-        if (!response.ok)
-        {
-            alert(response.statusText);
-            return;
-        }
-
-        const rawImg = await response.blob();
-        const imgObjUrl = URL.createObjectURL(rawImg);
-
-        const imageHolder = document.querySelector("#avatar");
-        imageHolder.src = imgObjUrl;
-    }
-    catch (err)
-    {
-        alert(err);
-        throw err;
-    }
+    // Start async job of fetching user avatar
+    getUserAvatar().then((src) => {
+        iAvatar.src = src + `?t=${new Date().getTime()}`; // cache breaker to force fetch
+    }).catch((err) => {
+        alert(`Error retrieving user avatar: ${err}`);
+    });
 }
 
 async function updateAvatar()
@@ -141,6 +127,8 @@ async function updateAvatar()
             method: "POST",
             body: formData,
         });
+
+        console.log(response);
         if (!response.ok)
         {
             alert(response.statusText);
@@ -148,11 +136,11 @@ async function updateAvatar()
         }
         
         alert("Success");
-        displayAvatar(); // New avatar set - fetch and display it
+        await displayAvatar(); // New avatar set - fetch and display it
     }
     catch (err)
     {
-        alert(response.statusText);
+        alert("Something went wrong when trying to change avatar");
         throw err;
     }
 }

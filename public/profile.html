@@ -3,9 +3,7 @@
     <head>
         <title> Denodaco - Profile </title>
         <link rel="stylesheet" href="styles.css">
-        <script src="js/config.js"></script>
-        <script src="js/authmanager.js"></script>
-        <script src="js/profileDisplay.js"></script>
+        <script type="module" src="js/profileDisplay.js"></script>
     </head>
     <body>
         <!-- Nav bar -->
@@ -22,7 +20,7 @@
         <!-- Log in modal -->
         <div id="not-logged-in-modal" class="modal">
             <div class="modal-content">
-                <span id="not-logged-in-modal-close-btn" class="close">&times;</span>
+                <p id="not-logged-in-modal-close-btn" class="close">&times;</p>
                 <p>You need to be logged in to view this content.</p>
                 <center><a href="login.html">Log in</a></center>
                 <br>
@@ -34,41 +32,51 @@
         
         <!-- READONLY account info -->
         <h2>Account info</h2>
-        <label> Username: </label>
-        <p id="username"></p>
+        <span> Username: </span>
+        <span id="username"><</span>
+        <br>
         
-        <label>Date of account creation:</label>
-        <p id="account-creation"></p>
+        <span>Date of account creation:</span>
+        <span id="account-creation"><</span>
+        <br>
         
-        <label>Date of last login:</label>
-        <p id="last-login"></p>
+        <span>Date of last login:</span>
+        <span id="last-login"><</span>
+        <br>
         
         <!-- settings that can be updated -->
         <h2>Profile settings</h2>
-        <label>First name:</label>
+        <span>First name:</span>
         <input id="first-name"></input><br>
+        <br>
         
-        <label>Middle names:</label>
+        <span>Middle names:</span>
         <input id="middle-names"></input><br>
+        <br>
         
-        <label>Last name:</label>
+        <span>Last name:</span>
         <input id="last-name"></input><br>
+        <br>
         
-        <label>Country code:</label>
+        <span>Country code:</span>
         <input id="country-code"></input><br>
+        <br>
         
-        <label>Birthdate:</label>
+        <span>Birthdate:</span>
         <input type="datetime-local" id="birthdate"></input><br>
+        <br>
         
-        <label>Email:</label>
+        <span>Email:</span>
         <input id="email"></input><br>
-
-        <label>Biography : </label>
+        <br>
+        
+        <span>Biography : </span>
         <textarea cols="40" rows="5" id="biography">Tell us something about yourself</textarea>
+        <br>
         
         <button type="submit" id="update-profile-btn">Update settings</button>
 
-        <label>Avatar: </label>
+        <span>Avatar: </span>
         <img id="avatar">
     
         <input id="avatar-upload" type="file" name="avatar">
