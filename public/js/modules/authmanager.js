@@ -43,6 +43,10 @@ function requiresAuth()
     const path = window.location.pathname;
     const splitted = path.split('/');
     const file = splitted[splitted.length - 1];
+
+    // If on home page, then skip since there's already signup buttons
+    if (file == "" || file.includes("index"))
+        return false;
     
     if (file.includes("login"))
         return false;
@@ -67,12 +71,8 @@ function authed()
 function notAuthed()
 {
     onNotAuthed.raise();
-    modal = document.querySelector("#not-logged-in-modal");
-    closeBtn = document.querySelector("#not-logged-in-modal-close-btn");
 
-    modal.style.display = "block";
 
-    closeBtn.addEventListener("click", () => { modal.style.display = "none"; });
 }
 
 Event.prototype = {
