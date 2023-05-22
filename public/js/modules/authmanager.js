@@ -60,9 +60,6 @@ function authed()
     const signupBtn = document.querySelector("#nav-signup-btn");
     const logoutBtn = document.querySelector("#nav-logout-btn");
     
-    logInBtn.style.display = "none";
-    signupBtn.style.display = "none";
-    logoutBtn.style.display = "block";
     onAuthed.raise();
 }
 
