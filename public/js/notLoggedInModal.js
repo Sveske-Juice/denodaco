@@ -5,6 +5,7 @@ const template = document.createElement("template");
 template.innerHTML = `
 <div id="not-logged-in-modal" class="modal">
     <div class="modal-header">
+        <h2>You're not logged in</h2>
         <span id="not-logged-in-modal-close-btn" class="close">&times;</span>
     </div>
     <div id="not-logged-in-modal-title">

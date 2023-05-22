@@ -190,12 +190,18 @@ nav > .menu {
 }
 
 .modal-header {
-    justify-content: end;
+    justify-content: space-between;
     min-height: 50px;
+
+    border-bottom: 1px solid var(--primary-color);
 }
 
 .modal-header #not-logged-in-modal-close-btn {
-    margin: 5px 15px;
+    margin: 10px 10px;
+}
+
+.modal-header h2 {
+    margin-left: 15px;
 }
 
 .modal-content {
@@ -205,16 +211,22 @@ nav > .menu {
 }
 
 .modal .close {
-    color: black;
     float: right;
     font-size: 28px;
     font-weight: bold;
+
+    text-align: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 8px;
 }
   
-.close:hover, .close:focus {
-    color: black;
-    text-decoration: none;
+.modal .close:hover, .close:focus {
     cursor: pointer;
+    background-color: var(--primary-color);
 }
 
 /* LOGIN MODAL SPECIFIC */
