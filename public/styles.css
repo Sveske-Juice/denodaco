@@ -5,7 +5,7 @@
     --text-color: #f7f8f7;
     --primary-color: #0e8c4d;
     --secondary-color: #222820;
-    --accent-color: #c6b8bc;
+    --accent-color: #202830;
 
     /* Transitions. */
     --hover-time: 0.2s;
@@ -21,7 +21,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     
-    margin: 0% 15% 0% 25%;
+    margin: 0% 25% 0% 25%;
 }
 
 /* ----- BUTTONS ----- */
@@ -167,33 +167,45 @@ nav > .menu {
     background-color: #481f48;
 }
 
-/* LOGIN MODAL */
+/* ----- GENERAL MODALS ----- */
 .modal {
-    /* display: none; Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    position: absolute;
+    top: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--accent-color);
+    width: 55vw;
+    height: 55vh;
+
+    border-radius: 10px;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+}
+
+.modal-header {
+    justify-content: end;
+    min-height: 50px;
+}
+
+.modal-header #not-logged-in-modal-close-btn {
+    margin: 5px 15px;
 }
 
 .modal-content {
-    background-color: #333;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-    border: none;
-    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-  
 
-.close {
-    color: #c3c3c3;
+.modal .close {
+    color: black;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -205,22 +217,34 @@ nav > .menu {
     cursor: pointer;
 }
 
-.modal-content a {
-    color: white;
-    text-decoration: none;
-    background-color: #712500;
+/* LOGIN MODAL SPECIFIC */
+#not-logged-in-modal-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 
-    text-decoration: none;
-    
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-
-    margin: 25px;
-
-    border-radius: 15px;
+    margin: 0px 25px 0px 25px;
 }
+
+#not-logged-in-modal-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-left: 50px;
+    width: 45%;
+}
+
+#not-logged-in-modal-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-right: 50px;
+    width: 45%;
+}
+
 
 label {
     font-weight: bold;
