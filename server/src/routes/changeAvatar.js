@@ -40,8 +40,6 @@ function changeAvatar(req, res)
         return;
     }
 
-    logger.log(`mimetype: ${avatar.mimetype}`);
-
     const avatarPath = config.uploadsPath() + `/${userID}/avatar.${extension}`;
 
     // Remove old avatar
