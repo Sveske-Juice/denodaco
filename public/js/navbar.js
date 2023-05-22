@@ -3,15 +3,14 @@
 const template = document.createElement("template");
 
 template.innerHTML = `
-    <ul class="nav-bar">
-        <li><a class="active" href="index.html">Home</a></li>
-        <li><a href="users.html">Users</a></li>
-        <li><a href="about.html">About</a></li>
-        <li style="float:right"><a href="profile.html">Profile</a></li>
-        <li id="nav-login-btn" class="nav-button" style="float:right"><a href="login.html">Sign in</a></li>
-        <li id="nav-signup-btn" class="nav-button" style="float:right"><a href="signup.html">Sign up</a></li>
-        <li id="nav-logout-btn" class="nav-button" style="float:right; display: none;"><a href="logout.html">Logout</a></li>
-    </ul>
+    <nav>
+        <div class="logo"><a class="menu-item" href="index.html">Home(add logo)</a></div>
+        <div class="menu">
+            <a class="menu-item" href="users.html">Users</a>
+            <a class="menu-item" href="about.html">About</a>
+            <a class="menu-item" href="profile.html">Profile</a>
+        </div>
+    </nav>
 `;
 
 // Insert at the top of the body

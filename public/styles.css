@@ -1,10 +1,34 @@
-body {
-    color: white;
-    background-color: #0b032d;
+/* ----- GLOBAL SETTINGS ----- */
+:root {
+    /* Color scheme. */
+    --background-color: #181c17;
+    --text-color: #f7f8f7;
+    --primary-color: #0e8c4d;
+    --secondary-color: #222820;
+    --accent-color: #c6b8bc;
+
+    /* Transitions. */
+    --hover-time: 0.2s;
+
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
+
+/* ----- BODY ----- */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+
+/* ----- BUTTONS ----- */
+
+/* Global button styling. */
 button {
-    background-color: #712500;
     width: 100%;
     padding: 15px;
     margin: 10px 0px;
@@ -12,8 +36,51 @@ button {
     cursor: pointer;
 }
 
-form {
-    border: none;
+/* Primary button specific styling. */
+.primary-button {
+    background-color: var(--primary-color);
+}
+
+/* Secondary button specific styling. */
+.secondary-button {
+    background-color: var(--secondary-color);
+}
+
+/* ----- NAVIGATION BAR ----- */
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+}
+
+nav > .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav > .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5em;
+}
+
+.menu-item {
+    color: var(--text-color);
+    text-decoration: none;
+
+    transform: scale(1);
+    transition-property: transform;
+    transition-duration: var(--hover-time);
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+.menu-item:hover {
+    transform: scale(1.2);
 }
 
 .login-background > input {
