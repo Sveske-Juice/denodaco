@@ -14,7 +14,6 @@
     background-color: var(--background-color);
 }
 
-
 /* ----- BODY ----- */
 body {
     display: flex;
@@ -24,7 +23,6 @@ body {
     
     margin: 0% 15% 0% 25%;
 }
-
 
 /* ----- BUTTONS ----- */
 
@@ -39,12 +37,35 @@ button {
 
 /* Primary button specific styling. */
 .primary-button {
+    cursor: pointer;
+    color: inherit;
     background-color: var(--primary-color);
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 18px;
+    border-radius: 6px;
+    padding: 1em 2em 1em 2em;
+    
+    transform: scale(1);
+}
+
+.primary-button:hover {
+    transform: scale(1.1);
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
 }
 
 /* Secondary button specific styling. */
 .secondary-button {
+    cursor: pointer;
+    color: inherit;
     background-color: var(--secondary-color);
+    text-align: center;
+
+    border-radius: 6px;
+    padding: 1em 2em 1em 2em;
 }
 
 /* ----- NAVIGATION BAR ----- */
@@ -84,6 +105,44 @@ nav > .menu {
     transform: scale(1.2);
 }
 
+.hero {
+    width: 100%;
+}
+
+/* ----- GREETER ----- */
+.greeter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10em;
+}
+
+.greeter-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    
+    width: 50%;
+    
+    padding: 0em 5em 6em 0em;
+    margin: 0px;
+    gap: 2em;
+}
+
+.greeter-signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    
+    width: 50%;
+    
+    padding: 0em 5em 6em 0em;
+    gap: 2em;
+}
+
+
 .login-background > input {
     width: 100%;
     margin: 8px 0;
@@ -97,10 +156,6 @@ nav > .menu {
     background-color: #74546a;
 }
 
-button:hover {
-    opacity: 0.7;
-}
-
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
@@ -110,44 +165,6 @@ button:hover {
 .login-background {
     padding: 25px;
     background-color: #481f48;
-}
-
-
-/* NAV BAR. */
-.nav-bar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-.nav-bar li {
-    float: left;
-}
-
-.nav-bar li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.nav-bar li a:hover {
-    background-color: #843b62;
-}
-
-.active {
-    background-color: #712500;
-}
-
-.nav-button a {
-    background-color: #712500;
-
-    margin-left: 25px;
-    margin-right: 25px;
-    border-radius: 15px;
 }
 
 /* LOGIN MODAL */
@@ -261,10 +278,6 @@ input {
     color: white;
     border: none;
     border-radius: 5px;
-}
-
-button {
-    color: white;
 }
 
 #avatar {
