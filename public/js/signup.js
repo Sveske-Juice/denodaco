@@ -1,5 +1,7 @@
 /* Code in control of signing a user up on client side, by requesting the api with user data */
 
+import { API_ENDPOINT } from "./modules/config.js";
+
 let signupBtn;
 
 function init()

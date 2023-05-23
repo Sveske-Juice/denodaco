@@ -64,7 +64,7 @@ async function signup(req, res)
 function setupUser(username, req, res)
 {
     logger.log(`Setting up new user ${username}`);
-    database.getUser(username)
+    database.getUser(username, true)
     .then((result) => {
         result = result[0];
         // Create default avatar
