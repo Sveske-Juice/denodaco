@@ -6,38 +6,81 @@
 
         <script src="js/navbar.js" type="text/javascript" defer></script>
 
-        <script src="js/config.js"></script>
-        <script src="js/signup.js"></script>
+        <!-- <script src="js/signup.js"></script> -->
     </head>
     <body>
-        <center> <h1> Signup for denodaco </h1> </center>
-        <div class="login-background">
-            <label>Username : </label>
-            <input id="username" type="username" placeholder="Enter Username" required>
 
-            <label>Password : </label>
-            <input id="password" type="password" placeholder="Enter Password" required>
-            
-            <label>Email : </label>
-            <input id="email" type="email" placeholder="Enter your email" required>
+        <h1>Welcome to Denodaco!</h1>
+        <p class="subtitle">On this page you can create a Denodaco account, by entering your personal information below</p>
 
-            <label>First name : </label>
-            <input id="first_name" type="text" placeholder="Enter your first name" required>
-            
-            <label>Middle names : </label>
-            <input id="middle_names" type="text" placeholder="Enter your middle name(s)">
-
-            <label>Last name : </label>
-            <input id="last_name" type="text" placeholder="Enter your last name" required>
-
-            <label>Country code (Max two letter: ex: DK or US etc.) : </label>
-            <input id="country_code" type="text" placeholder="Enter your country code" required>
-
-            <label>birthdate : </label>
-            <input id="birthdate" type="date" required>
-
-            <button id="signup-btn" type="submit">Signup</button>
+        <div class="form signup-form">
+            <div class="form-entry">
+                <div class="form-entry-header">
+                    <label>Email</label>
+                </div>
+                <div class="form-input">
+                    <input type="email" id="email" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-entry">
+                <div class="form-entry-header">
+                    <label>Username</label>
+                </div>
+                <div class="form-input">
+                    <input type="text" id="username" placeholder="Username">
+                </div>
+            </div>
+            <div class="form-entry">
+                <div class="form-entry-header">
+                    <label>Password</label>
+                </div>
+                <div class="form-input">
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-entry">
+                <div class="form-entry-header">
+                    <label>First name</label>
+                </div>
+                <div class="form-input">
+                    <input type="text" id="first_name" placeholder="First Name">
+                </div>
+            </div>
+            <div class="form-entry">
+                <div class="form-entry-header">
+                    <label>Middle name(s) (optional)</label>
+                </div>
+                <div class="form-input">
+                    <input type="text" id="middle_names" placeholder="Middle Names">
+                </div>
+            </div>
+            <div class="form-entry">
+                <div class="form-entry-header">
+                    <label>Last Name</label>
+                </div>
+                <div class="form-input">
+                    <input type="text" id="last_name" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-entry">
+                <div class="form-entry-header">
+                    <label>Country Code</label>
+                </div>
+                <div class="form-input">
+                    <input type="text" id="country_code" placeholder="Country Code (ex: DK, US)">
+                </div>
+            </div>
+            <div class="form-entry">
+                <div class="form-entry-header">
+                    <label>Birthdate</label>
+                </div>
+                <div class="form-input">
+                    <input type="datetime-local" id="birthdate">
+                </div>
+            </div>
+            <button class="primary-button" id="signup-btn">Signup</button>
         </div>
+
 
     </body>
 </html>
