@@ -228,7 +228,81 @@ nav > .menu {
     gap: 2em;
 }
 
+.profile-settings input,textarea {
+    color: var(--text-color);
+    background-color: var(--secondary-color);
 
+    text-align: left;
+    outline: none;
+    
+    border-radius: 4px;
+    border: 1px solid var(--primary-color);
+
+    padding: 12px;
+
+    max-width: fit-content;
+}
+
+
+/* ----- PROFILE ----- */
+.profile {
+    width: 100%;
+}
+
+.account-info-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+}
+
+.profile-settings {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5em;
+}
+
+.account-info-container #avatar {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+
+    border-radius: 125px;
+}
+
+.account-info-container .avatar-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar-container-settings {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+#avatar-upload {
+    color: var(--text-color);
+}
+
+#avatar-upload::file-selector-button {
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+
+    border: none;
+    border-radius: 5px;
+
+    padding: 10px;
+    cursor: pointer;
+}
 
 .login-background > input {
     width: 100%;
@@ -405,10 +479,6 @@ input {
     color: white;
     border: none;
     border-radius: 5px;
-}
-
-#avatar {
-    width: 250px;
 }
 
 /* ----- RESPONSIVENESS ----- */
