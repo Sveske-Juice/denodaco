@@ -26,9 +26,14 @@ function getProfileData(req, res)
         if (res.locals.userInfo["is_admin"] != 1)
         {
             delete result.is_admin;
-            delete result.last_login;
             delete result.has_profile_picture;
             delete result.user_data;
+
+            // Some data is okay to send if the requesting user is the profile requested
+            if (!requestingUser)
+            {
+                delete result.last_login;
+            }
         }
 
         res.json(result);
