@@ -16,7 +16,7 @@ async function signin()
 {
     const username = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
-
+    console.log(password)
     try {
         const response = await fetch(API_ENDPOINT + "/login", {
             method: "POST",
@@ -33,7 +33,8 @@ async function signin()
         }
 
         const data = await response.json();
-        console.log(data["accessToken"]);
+        localStorage.setItem("username", JSON.stringify(data["username"]));
+        localStorage.setItem("user_id", JSON.stringify(data["user_id"]));
 
         location.href = BASE_URL;
     }

@@ -165,6 +165,15 @@ nav > .menu {
     gap: 2em;
 }
 
+/* SPECIFIC GREETERS */
+#logged-in {
+    display: none;
+}
+
+#not-logged-in {
+    display: none;
+}
+
 
 /* ----- GENERAL FORMS ----- */
 .form {

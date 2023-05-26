@@ -49,9 +49,11 @@ async function login(req, res)
 
             // Passwords match
             logger.log(`[AUTH] User '${username} just logged in.`);
-            const accessToken = createAccessToken(user);
+            const accessToken = createAccessToken(getPayload(user));
             res.cookie('accessToken', accessToken, { sameSite: 'strict', httpOnly: 'true', secure: 'true', maxAge: process.env.JWT_EXPIRATION * 1000});
-            res.json({ "accessToken": accessToken});
+            res.json({
+                "username": user["username"],
+                "user_id": user["id"]});
             return;
         }
         catch (err)
@@ -64,15 +66,18 @@ async function login(req, res)
     });
 }
 
-function createAccessToken(user)
-{
-    const payload = {
+function getPayload(user)
+{   
+    return {
         "username": user["username"],
         "has_profile_picture": user["has_profile_picture"],
         "user_id": user["id"],
         "is_admin": user["is_admin"],
     }
+}
 
+function createAccessToken(payload)
+{
     return jwt.sign(payload, process.env.JWT_SECRET);
 }
 

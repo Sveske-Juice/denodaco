@@ -7,21 +7,27 @@
 
         <script src="js/navbar.js" type="text/javascript" defer></script>
 
+        <script type="module" src="js/showLandingGreeter.js"></script>
         <script type="module" src="js/datacollector.js"></script>
     </head>
 
     <body>
         <div class="hero">
-            <h2>Get started</h2>
-            <div class="greeter">
-                <div class="greeter-login">
-                    <p class="subtitle">Already have an account?</p>
-                    <a class="primary-button" href="login.html">Login</a>
+            <div id="not-logged-in">
+                <h2>Get started</h2>
+                <div class="greeter">
+                    <div class="greeter-login">
+                        <p class="subtitle">Already have an account?</p>
+                        <a class="primary-button" href="login.html">Login</a>
+                    </div>
+                    <div class="greeter-signup">
+                        <p class="subtitle">New here? Create an account</p>
+                        <a class="primary-button" href="signup.html">Signup</a>
+                    </div>
                 </div>
-                <div class="greeter-signup">
-                    <p class="subtitle">New here? Create an account</p>
-                    <a class="primary-button" href="signup.html">Signup</a>
-                </div>
+            </div>
+            <div id="logged-in">
+                <h2 id="welcome-text">Welcome back Unkown!</h2>
             </div>
         </div>
         hellos

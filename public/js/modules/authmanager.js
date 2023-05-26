@@ -43,10 +43,6 @@ function requiresAuth()
     const path = window.location.pathname;
     const splitted = path.split('/');
     const file = splitted[splitted.length - 1];
-
-    // If on home page, then skip since there's already signup buttons
-    if (file == "" || file.includes("index"))
-        return false;
     
     if (file.includes("login"))
         return false;
@@ -60,10 +56,6 @@ function requiresAuth()
 // Called on page load if user already logged in
 function authed()
 {
-    const logInBtn = document.querySelector("#nav-login-btn");
-    const signupBtn = document.querySelector("#nav-signup-btn");
-    const logoutBtn = document.querySelector("#nav-logout-btn");
-    
     onAuthed.raise();
 }
 
@@ -71,8 +63,6 @@ function authed()
 function notAuthed()
 {
     onNotAuthed.raise();
-
-
 }
 
 Event.prototype = {
