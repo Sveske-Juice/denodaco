@@ -1,3 +1,5 @@
+import { BASE_URL, API_ENDPOINT } from "./modules/config.js";
+
 window.addEventListener("load", async () => {
     try {
         const response = await fetch(API_ENDPOINT + "/logout", )
