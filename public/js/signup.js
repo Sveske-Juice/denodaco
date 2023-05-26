@@ -1,6 +1,6 @@
 /* Code in control of signing a user up on client side, by requesting the api with user data */
 
-import { API_ENDPOINT } from "./modules/config.js";
+import { BASE_URL, API_ENDPOINT } from "./modules/config.js";
 
 let signupBtn;
 
@@ -48,6 +48,8 @@ async function signup()
             alert(`An error occured while trying to sign in. \nReason: ${response.statusText}`);
             return;
         }
+
+        location.href = BASE_URL;
     }
     catch (err)
     {
