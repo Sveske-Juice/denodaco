@@ -2,68 +2,71 @@
 <html>
     <head>
         <title> Denodaco - Profile </title>
+        <meta charset="utf-8">
         <link rel="stylesheet" href="styles.css">
-
+        
         <script src="js/navbar.js" type="text/javascript" defer></script>
-
+        
         <script type="module" src="js/profileDisplay.js"></script>
         <script type="module" src="js/notLoggedInModal.js"></script>
     </head>
     <body>
-        
-        <!-- READONLY account info -->
-        <h2>Account info</h2>
-        <span> Username: </span>
-        <span id="username"><</span>
-        <br>
-        
-        <span>Date of account creation:</span>
-        <span id="account-creation"><</span>
-        <br>
-        
-        <span>Date of last login:</span>
-        <span id="last-login"><</span>
-        <br>
-        
-        <!-- settings that can be updated -->
-        <h2>Profile settings</h2>
-        <span>First name:</span>
-        <input id="first-name"></input><br>
-        <br>
-        
-        <span>Middle names:</span>
-        <input id="middle-names"></input><br>
-        <br>
-        
-        <span>Last name:</span>
-        <input id="last-name"></input><br>
-        <br>
-        
-        <span>Country code:</span>
-        <input id="country-code"></input><br>
-        <br>
-        
-        <span>Birthdate:</span>
-        <input type="datetime-local" id="birthdate"></input><br>
-        <br>
-        
-        <span>Email:</span>
-        <input id="email"></input><br>
-        <br>
-        
-        <span>Biography : </span>
-        <textarea cols="40" rows="5" id="biography">Tell us something about yourself</textarea>
-        <br>
-        
-        <button type="submit" id="update-profile-btn">Update settings</button>
+        <div class="profile">
+            <h2>Account info</h2>
+            <div class="account-info-container">
+                <div class="avatar-container">
+                    <img id="avatar">
 
-        <span>Avatar: </span>
-        <img id="avatar">
-    
-        <input id="avatar-upload" type="file" name="avatar">
-        <button id="upload-avatar-btn">Change avatar</button>
-    
+                    <div class="avatar-container-settings">
+                        <label><input id="avatar-upload" type="file" accept="image/*, " name="avatar"></label>
+                        <button class="secondary-button" id="upload-avatar-btn">Change avatar</button>
+                    </div>
+                </div>
+                <div class="account-info">
+                    <div class="account-info-entry">
+                        <span> Username: </span>
+                        <span id="username"></span>
+                    </div>
+                    
+                    <div class="account-info-entry">
+                        <span>Date of account creation:</span>
+                        <span id="account-creation"></span>
+                    </div>
+                    
+                    <div class="account-info-entry">
+                        <span>Date of last login:</span>
+                        <span id="last-login"></span>
+                    </div>
+                </div>
+            </div>
 
+            <h2>Profile settings</h2>
+            <div class="profile-settings">
+                <span>First name:</span>
+                <input id="first-name"></input><br>
+                
+                <span>Middle names:</span>
+                <input id="middle-names"></input><br>
+
+                <span>Last name:</span>
+                <input id="last-name"></input><br>
+
+                <span>Biography : </span>
+                <textarea cols="40" rows="5" id="biography">Tell us something about yourself</textarea>
+                <br>
+
+                <span>Country code:</span>
+                <input id="country-code"></input><br>
+
+                <span>Birthdate:</span>
+                <input type="datetime-local" id="birthdate"></input><br>
+                
+                <span>Email:</span>
+                <input id="email"></input><br>
+            </div>
+
+            <button class="primary-button" id="update-profile-btn">Update Profile</button>
+        </div>
     </body>
-    </html>
+</html>
     
