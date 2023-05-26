@@ -44,7 +44,7 @@ async function displayProfileSettings()
 
     try {
         let data = await getUser();
-        console.log(JSON.stringify(data));
+
         // Set data
         pUsername.textContent = data["username"];
         pLastLogin.textContent = data["last_login"];

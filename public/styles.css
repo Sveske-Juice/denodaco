@@ -6,6 +6,7 @@
     --primary-color: #0e8c4d;
     --secondary-color: #222820;
     --accent-color: #202830;
+    --danger-color: #c94742;
 
     /* Transitions. */
     --hover-time: 0.2s;
@@ -58,7 +59,6 @@ button {
     cursor: pointer;
 }
 
-/* Primary button specific styling. */
 .primary-button {
     cursor: pointer;
     color: inherit;
@@ -80,12 +80,23 @@ button {
     transition-timing-function: ease;
 }
 
-/* Secondary button specific styling. */
 .secondary-button {
     cursor: pointer;
     color: inherit;
     background-color: var(--secondary-color);
     text-align: center;
+    text-decoration: none;
+
+    border-radius: 6px;
+    padding: 1em 2em 1em 2em;
+}
+
+.danger-button {
+    cursor: pointer;
+    color: inherit;
+    background-color: var(--danger-color);
+    text-align: center;
+    text-decoration: none;
 
     border-radius: 6px;
     padding: 1em 2em 1em 2em;
