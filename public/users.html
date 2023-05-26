@@ -1,21 +1,26 @@
 <!DOCTYPE html> 
 <html>
     <head>
-        <title> Denodaco - Profile </title>
+        <title> Denodaco - Users </title>
+        <meta charset="utf-8">
         <link rel="stylesheet" href="styles.css">
-
+        
         <script src="js/navbar.js" type="text/javascript" defer></script>
 
         <script type="module" src="js/usersDisplay.js"></script>
         <script type="module" src="js/notLoggedInModal.js"></script>
     </head>
     <body>
-   
         <!-- Users table -->
-        <ul id="users-parent-container">
-
-        </ul>
+        <div class="users-parent-container">
+            <template id="user-container-template">
+                <div class="user-container">
+                    <img id="avatar">
+                    <p id="full-name"></p>
+                    <p id="username"></p>
+                </div>
+            </template>
+        </div>
 
     </body>
-    </html>
-    
+</html>

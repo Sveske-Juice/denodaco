@@ -401,31 +401,46 @@ nav > .menu {
 
 
 /* Users. */
-#users-parent-container {
-    list-style-type: none;
+.users-parent-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2em;
+}
+
+.user-container {
+    background-color: var(--secondary-color);
+
+    padding: 10px 15px;
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    
+    gap: 5px;
     cursor: pointer;
 }
 
-#users-parent-container li:hover {
-    background-color: #712500;
+.user-container:hover {
+    background-color: var(--primary-color);
 }
 
-#users-parent-container li {
-    background-color: #333;
-    margin-top: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-#users-parent-container img {
-    vertical-align: middle;
-    object-fit: cover;
+.user-container img {
     width: 50px;
     height: 50px;
-    margin-right: 10px;
-    margin-left: 10px;
+    object-fit: cover;
+
     border-radius: 25px;
+
+    margin-right: 25px;
 }
+
+.user-container p {
+    font-size: var(--subtitle-font-size);
+}
+
 
 /* Public user page. */
 .user-info-container {

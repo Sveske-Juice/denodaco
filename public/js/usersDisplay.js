@@ -12,7 +12,7 @@ async function updateUsers()
 
         if (!response.ok)
         {
-            alert(`Error occured while trying to get response from sever: ${response.statusText}`);
+            alert(`Error occured while trying to get users from backend: ${response.statusText}`);
             return;
         }
 
@@ -28,15 +28,10 @@ async function updateUsers()
 
 function displayUsers(users)
 {
-    const container = document.querySelector("#users-parent-container");
-    
+    const container = document.getElementsByClassName("users-parent-container")[0];
+    console.log(container)
     users.forEach(user => {
-        console.log(`Showing ${JSON.stringify(user)}`);
-
-        const li = document.createElement("li");
-        container.append(li);
-
-        displayUser(li, user, onUserClick);
+        displayUser(container, user, onUserClick);
     });
 }
 

@@ -3,28 +3,26 @@ import { API_ENDPOINT } from "./config.js";
 
 export function displayUser(parent, userdata, clickCallback = null)
 {
-    const container = document.createElement("div");
+    // Clone user container template for new user to display
+    const template = document.getElementById("user-container-template");
+    const container = template.content.firstElementChild.cloneNode(true);
+    parent.appendChild(container);
+    console.log(container)
+    // Setup click callback
     if (clickCallback != null)
         container.addEventListener("click", () => { clickCallback(userdata["id"]); });
-    container.class = "user-container";
+
     container.id = userdata["id"];
-    parent.append(container);
-    
-    const avatar = document.createElement("img");
-    container.append(avatar);
+
+    // Start async job of setting avatar src
+    const avatar = container.querySelector("#avatar");
     getUserAvatar(userdata["id"]).then((src) => avatar.src = src);
 
-    const displayName = document.createElement("span");
-    displayName.class = "displayname";
-    displayName.textContent = `${userdata["first_name"]} ${userdata["last_name"]}`;
-    container.append(displayName);
+    const displayName = container.querySelector("#full-name");
+    displayName.textContent = `${userdata["first_name"]} ${userdata["middle_names"]} ${userdata["last_name"]}`;
 
-    const username = document.createElement("span");
-    username.class = "username";
+    const username = container.querySelector("#username");
     username.textContent = `(@${userdata["username"]})`;
-    container.append(username);
-
-    
 }
 
 export function getUserAvatar(userid = undefined)
