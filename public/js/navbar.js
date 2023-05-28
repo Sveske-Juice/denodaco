@@ -15,4 +15,5 @@ template.innerHTML = `
 `;
 
 // Insert at the top of the body
+console.log("CREATING NAV")
 document.body.insertBefore(template.content, document.body.firstChild);

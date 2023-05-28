@@ -11,7 +11,8 @@ function uploadPost(req, res)
     })
     .catch((err) => {
         logger.log(err);
-        res.status(400).send(err);
+        res.statusMessage = err;
+        res.sendStatus(400);
     });
 }
 

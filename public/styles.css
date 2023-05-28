@@ -438,7 +438,7 @@ nav > .menu {
     gap: 25px;
 }
 
-.post-input {
+.post-content {
     display: flex;
 
     flex-grow: 1;
@@ -448,6 +448,16 @@ nav > .menu {
 
     margin: 5px;
     margin-bottom: 25px;
+}
+
+.post-title {
+    display: flex;
+    flex-direction: row;
+
+    align-self: stretch;
+    align-items: center;
+    gap: 2em;
+    margin: 10px 5px 5px 5%;
 }
 
 .textarea-wrapper {
