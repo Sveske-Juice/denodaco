@@ -10,7 +10,7 @@ function verifyToken(req, res, next)
         next();
         return;
     }
-    const token = req.cookies["accessToken"];
+    const token = req.cookies["accessToken"]; // TODO also check req header authorization
 
     if (token == undefined)
     {

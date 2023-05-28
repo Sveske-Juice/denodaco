@@ -53,7 +53,8 @@ async function login(req, res)
             res.cookie('accessToken', accessToken, { sameSite: 'strict', httpOnly: 'true', secure: 'true', maxAge: process.env.JWT_EXPIRATION * 1000});
             res.json({
                 "username": user["username"],
-                "user_id": user["id"]});
+                "user_id": user["id"],
+                "token": accessToken});
             return;
         }
         catch (err)

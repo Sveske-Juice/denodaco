@@ -9,7 +9,6 @@ const express     = require("express");
 const cookieparser= require("cookie-parser");
 const userAgent   = require("express-useragent");
 
-// middleware
 const verifyJWT     = require("./middleware/jwt_verify");
 const login         = require("./routes/login");
 const logout        = require("./routes/logout"); 
@@ -20,6 +19,7 @@ const avatar        = require("./routes/avatar");
 const changeAvatar  = require("./routes/changeAvatar");
 const getAllUsers   = require("./routes/getAllUsers");
 const dataCollection= require("./routes/dataCollection");
+const uploadPost    = require("./routes/uploadPost");
 
 const app = express();
 const port = 3500;
@@ -53,6 +53,7 @@ app.post(config.serverRoot() + "/api/signup", signup);
 app.post(config.serverRoot() + "/api/update_profile", updateProfile);
 app.post(config.serverRoot() + "/api/change_avatar", changeAvatar);
 app.post(config.serverRoot() + "/api/data_collection", dataCollection);
+app.post(config.serverRoot() + "/api/upload_post", uploadPost);
 
 app.get(config.serverRoot() + "/api/get_profile_data", getProfileData);
 app.get(config.serverRoot() + "/api/avatar", avatar);
@@ -66,7 +67,6 @@ app.use((err, req, res, next) => {
   res.status(500).send(`Server error: ${err}`);
   throw err;
 });
-
 
 process.on('SIGINT', () =>
 {

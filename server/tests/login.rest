@@ -1,5 +1,6 @@
 ### NO AUTH TOKEN
 
+# @name login
 POST https://casdnas.duckdns.org/denodaco/api/login
 Content-Type: application/json
 

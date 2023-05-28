@@ -289,6 +289,28 @@ function updateUserdata(userid, userdata)
     });
 }
 
+function createPost(ownerid, title, content)
+{
+    return new Promise((resolve, reject) => {
+        if (!ownerid)
+            return reject("No owner id supplied");
+
+        if (!title)
+            return reject("No title supplied");
+
+        if (!content)
+            return reject("No content supplied");
+
+        connection.query(
+            `INSERT INTO posts(title, creation, owner_id, content)\
+            VALUES (${mysql.escape(title)}, ${mysql.escape(moment(new Date()).format('YYYY-MM-DD HH:mm:ss').toString())}, ${mysql.escape(ownerid)}, ${mysql.escape(content)});`
+            , (err, result) => {
+                if (err) return reject(err);
+                resolve(result);
+            });
+    });
+}
+
 module.exports = 
 {
     init,
@@ -299,4 +321,5 @@ module.exports =
     SetUserHasPP,
     getAllUsersExcept,
     updateUserdata,
+    createPost,
 }
