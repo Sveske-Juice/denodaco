@@ -461,7 +461,6 @@ nav > .menu {
     font-size: var(--subtitle-font-size);
 }
 
-
 /* Public user page. */
 .user-info-container {
     line-height: 3;
@@ -483,6 +482,11 @@ nav > .menu {
     color: white;
     border: none;
     border-radius: 5px;
+}
+
+
+.show-when-logged-in {
+    display: none; /* Default to be hidden. */
 }
 
 /* ----- RESPONSIVENESS ----- */

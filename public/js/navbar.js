@@ -6,6 +6,7 @@ template.innerHTML = `
     <nav>
         <div class="logo"><a class="menu-item" href="index.html">Home(add logo)</a></div>
         <div class="menu">
+            <a class="menu-item primary-button show-when-logged-in" id="create-post-btn">Create Post</a>
             <a class="menu-item" href="users.html">Users</a>
             <a class="menu-item" href="about.html">About</a>
             <a class="menu-item" href="profile.html">Profile</a>
