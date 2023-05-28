@@ -8,8 +8,8 @@ window.addEventListener("load", async () => {
             alert(response.statusText);
             return;
         }
-        document.querySelector("#status").textContent = "Succesfully logged out. Returning to home in 3 seconds...";
-        setTimeout(() => { location.href = BASE_URL; }, 3000);
+        document.querySelector("#status").textContent = "Succesfully logged out. Returning to home in 1 seconds...";
+        setTimeout(() => { location.href = BASE_URL; }, 1000);
     }
     catch (err)
     {
