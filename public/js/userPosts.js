@@ -12,7 +12,7 @@ async function init()
     }
 
     const data = await getAllUserPosts();
-    // console.log(data);
+
     data.forEach(async (post) => {
         
         // Get owner info
@@ -21,7 +21,6 @@ async function init()
         // Get avatar src
         post["user_avatar_src"] = await getUserAvatar(post["owner_id"]);
         
-        console.log(post);
         createNewPost(parent, post);
     });
 }

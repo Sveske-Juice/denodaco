@@ -50,7 +50,6 @@ export async function uploadComment(postid, content) {
 }
 
 export function showComment(parent, commentData) {
-    console.log(commentData);
     const commentTemplate = document.getElementById("comment-template");
 
     const container = commentTemplate.content.firstElementChild.cloneNode(true);

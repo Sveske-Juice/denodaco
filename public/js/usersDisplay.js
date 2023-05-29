@@ -29,7 +29,6 @@ async function updateUsers()
 function displayUsers(users)
 {
     const container = document.getElementsByClassName("users-parent-container")[0];
-    console.log(container)
     users.forEach(user => {
         displayUser(container, user, onUserClick);
     });
@@ -37,7 +36,6 @@ function displayUsers(users)
 
 function onUserClick(userid)
 {
-    console.log("clicked " + userid);
     location.href = BASE_URL + `/user.html?id=${userid}`;
 }
 

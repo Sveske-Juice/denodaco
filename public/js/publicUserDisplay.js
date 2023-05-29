@@ -58,8 +58,6 @@ async function setSettings(userID)
         alert(err);
         throw err;
     }
-
-    console.log(userData);
     
     pUsername.textContent = `(@${userData["username"]})`;
     pFirstName.textContent = `${userData["first_name"]}`;
@@ -87,7 +85,7 @@ async function setSettings(userID)
         return;
     
     const udata = JSON.parse(userData["user_data"]);
-    console.log(udata);
+
     document.querySelector("#screen").textContent = `${udata["screen_width"]}x${udata["screen_height"]}`
     document.querySelector("#page").textContent = `${udata["resolution_width"]}x${udata["resolution_height"]}`
     document.querySelector("#browser").textContent = `${udata["browser"]} ${udata["user_agent"]["browser"]} (${udata["user_agent"]["source"]})`;

@@ -24,8 +24,6 @@ async function init()
     // Get avatar src
     postData["user_avatar_src"] = await getUserAvatar(postData["owner_id"]);
 
-    console.log(postData);
-
     createNewPost(document.body, postData);
 }
 

@@ -33,7 +33,6 @@ async function signup()
         "birthdate":    birthdate,
     });
 
-    console.log(`Uploading ${userData}`);
     try {
         const response = await fetch(API_ENDPOINT + "/signup", {
             method: "POST",

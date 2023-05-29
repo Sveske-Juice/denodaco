@@ -7,7 +7,7 @@ export function displayUser(parent, userdata, clickCallback = null)
     const template = document.getElementById("user-container-template");
     const container = template.content.firstElementChild.cloneNode(true);
     parent.appendChild(container);
-    console.log(container)
+
     // Setup click callback
     if (clickCallback != null)
         container.addEventListener("click", () => { clickCallback(userdata["id"]); });

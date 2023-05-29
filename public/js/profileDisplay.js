@@ -128,7 +128,6 @@ async function updateAvatar()
             body: formData,
         });
 
-        console.log(response);
         if (!response.ok)
         {
             alert(response.statusText);

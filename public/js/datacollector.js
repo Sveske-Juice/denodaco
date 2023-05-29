@@ -52,8 +52,6 @@ function gatherData()
 
     // platform
     data["platform"] = navigator.platform;
-
-    // console.log(data);
 }
 
 // Uploads to api
