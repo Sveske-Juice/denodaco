@@ -16,14 +16,14 @@ let src = `
         <span id="create-post-close-btn" class="close">&times;</span>
     </div>
     <div class="create-post-modal-content">
-        <div class="post-title">
+        <div class="create-post-title">
             <span>Title:</span>
             <textarea rows="1" cols="50" id="create-post-title"></textarea>
         </div>
-        <div class="post-content">
+        <div class="create-post-content">
             <div class="textarea-wrapper"><textarea id="create-post-content"></textarea></div>
         </div>
-    <div class="post-footer">
+    <div class="create-post-footer">
         <a class="primary-button" id="create-post-upload-btn">Post</a>
         <a class="danger-button" id="create-post-cancel">Cancel</a>
     </div>

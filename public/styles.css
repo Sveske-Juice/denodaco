@@ -3,9 +3,10 @@
     /* Color scheme. */
     --background-color: #181c17;
     --text-color: #f7f8f7;
+    --suttle-text-color: #bbbbbb;
     --primary-color: #0e8c4d;
     --secondary-color: #222820;
-    --accent-color: #202830;
+    --accent-color: #151516;
     --danger-color: #c94742;
 
     /* Transitions. */
@@ -438,7 +439,7 @@ nav > .menu {
     gap: 25px;
 }
 
-.post-content {
+.create-post-content {
     display: flex;
 
     flex-grow: 1;
@@ -450,7 +451,7 @@ nav > .menu {
     margin-bottom: 25px;
 }
 
-.post-title {
+.create-post-title {
     display: flex;
     flex-direction: row;
 
@@ -478,7 +479,7 @@ nav > .menu {
     resize: none;
 }
 
-.post-footer {
+.create-post-footer {
     display: flex;
     flex-direction: row;
 
@@ -486,6 +487,65 @@ nav > .menu {
     margin-bottom: 10px;
 
     gap: 2em;
+}
+
+/* HOMEPAGE POSTS */
+.post-container {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--accent-color);
+
+    padding: 10px 10px 5px 10px;
+
+    width: 40vw;
+
+    border-radius: 5px;
+}
+
+.post-header {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    gap: 1em;
+}
+
+.post-title {
+    margin-top: -20px;
+    border-bottom: solid 1px var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-footer {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    margin-top: 25px;
+    border-top: solid 1px var(--primary-color);
+    padding: 5px;
+
+    gap: 2em;
+}
+
+.post-button {
+    color: var(--suttle-text-color);
+    background-color: var(--accent-color);
+
+    padding: 2px 5px;
+    border-radius: 2px;
+
+    cursor: pointer;
+}
+
+.post-button:hover {
+    background-color: var(--primary-color);
 }
 
 /* Users. */
