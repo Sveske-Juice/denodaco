@@ -1,4 +1,4 @@
-import { API_ENDPOINT } from "./modules/config.js";
+import { API_ENDPOINT } from "./config.js";
 
 const postHyperlinkId = "#post-hyperlink";
 const avatarId = "#avatar";

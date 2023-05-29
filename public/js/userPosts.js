@@ -1,7 +1,7 @@
 import { onAuthed } from "./modules/authmanager.js";
 import { getUser } from "./modules/getUser.js";
 import { getUserAvatar } from "./modules/displayUser.js";
-import { createNewPost, getAllUserPosts } from "./postUtils.js";
+import { createNewPost, getAllUserPosts } from "./modules/postUtils.js";
 
 async function init()
 {

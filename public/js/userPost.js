@@ -1,5 +1,5 @@
 import { onAuthed } from "./modules/authmanager.js";
-import { createNewPost, getUserPost } from "./postUtils.js";
+import { createNewPost, getUserPost } from "./modules/postUtils.js";
 import { getUser } from "./modules/getUser.js";
 import { getUserAvatar } from "./modules/displayUser.js";
 
