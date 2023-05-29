@@ -623,13 +623,32 @@ nav > .menu {
 .comment {
     display: flex;
     flex-direction: column;
+    padding-bottom: 5px;
+    border-bottom: solid 1px var(--secondary-color);
 }
 
 .comment-header {
     display: flex;
     flex-direction: row;
 
+    align-items: center;
+    margin-bottom: 5px;
+
     gap: 1em;
+}
+
+.comment-header > #avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+
+    border-radius: 25px;
+}
+
+.comment-content {
+    background-color: var(--secondary-color);
+    border: none;
+    resize: none;
 }
 
 

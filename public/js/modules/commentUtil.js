@@ -1,5 +1,7 @@
 import { API_ENDPOINT } from "./config.js";
 
+
+let avatarId = "#avatar";
 let authorId = "#author";
 let creationId = "#creation";
 let contentId = "#comment-content";
@@ -40,8 +42,6 @@ export async function uploadComment(postid, content) {
         if (!res.ok) {
             throw new Error(`Could not upload comment, reason: ${res.statusText}`);
         }
-
-        alert("succes");
     }
     catch (err) {
         console.error(err);
@@ -56,6 +56,9 @@ export function showComment(parent, commentData) {
     const container = commentTemplate.content.firstElementChild.cloneNode(true);
 
     // Set comment data
+    const avatar = container.querySelector(avatarId);
+    avatar.src = commentData["user_avatar_src"];
+
     const author = container.querySelector(authorId);
     author.innerHTML = `<a href=user.html?id=${commentData["owner_id"]}>@${commentData["owner_user_details"]["username"]}</a> replied at`;
     
