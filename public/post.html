@@ -30,6 +30,34 @@
                     <a id="comments-button" class="post-button">Comments</a>
                     <a class="post-button">Share</a>
                 </div>
+                <div class="create-comment-parent">
+                    <div class="create-comment-container">
+                        <div class="create-comment-header">
+                            <h3>Write your own comment</h3>
+                        </div>
+                        <div class="create-comment-content">
+                            <div class="textarea-wrapper">
+                                <textarea rows="5" id="create-comment-content"></textarea>
+                            </div>
+                        </div>
+                        <div class="create-comment-footer">
+                            <a class="post-button">Post comment</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-section">
+                    <template id="comment-template">
+                        <div class="comment">
+                            <div class="commment-header">
+                                <span id="author">@bobb says</span>
+                                <span id="creation">at 28.27.10:19028</span>
+                            </div>
+                            <div class="content">
+                                <textarea id="comment-content" readonly></textarea>
+                            </div>
+                        </div>
+                    </template>
+                </div>
             </div>
         </template>
     </body>

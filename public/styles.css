@@ -567,6 +567,63 @@ nav > .menu {
     background-color: var(--primary-color);
 }
 
+/* Create comment */
+.create-comment-parent {
+    display: flex;
+    flex-direction: column;
+
+    border-bottom: solid 1px var(--primary-color);
+}
+
+.create-comment-container {
+    display: flex;
+    flex-direction: column;
+
+    margin: 10px 50px;
+}
+
+.create-comment-header {
+    display: flex;
+    flex-direction: row;
+
+    gap: 1em;
+}
+
+.create-comment-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-comment-footer {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+/* Comment section */
+.comment-section {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1em;
+
+    margin-top: 10px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-header {
+    display: flex;
+    flex-direction: row;
+
+    gap: 1em;
+}
+
+
 /* Users. */
 .users-parent-container {
     display: flex;
