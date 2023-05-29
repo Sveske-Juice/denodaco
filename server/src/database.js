@@ -334,6 +334,19 @@ function getUserPost(postid)
     });
 }
 
+function getAllComments(postid)
+{    
+    return new Promise((resolve, reject) => {
+        if (!postid)
+            return reject("No postid provided");
+        
+        connection.query(`SELECT * FROM comments WHERE post_id = ${mysql.escape(postid)}`, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);        
+        });
+    });
+}
+
 module.exports = 
 {
     init,
@@ -347,4 +360,5 @@ module.exports =
     createPost,
     getAllUserPosts,
     getUserPost,
+    getAllComments,
 }

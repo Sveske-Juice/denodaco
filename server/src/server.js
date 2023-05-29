@@ -22,6 +22,7 @@ const dataCollection= require("./routes/dataCollection");
 const uploadPost    = require("./routes/uploadPost");
 const getAllUserPosts= require("./routes/getAllUserPosts");
 const getUserPost   = require("./routes/getUserPost");
+const getAllComments= require("./routes/getAllComments");
 
 const app = express();
 const port = 3500;
@@ -62,6 +63,7 @@ app.get(config.serverRoot() + "/api/avatar", avatar);
 app.get(config.serverRoot() + "/api/get_all_users", getAllUsers);
 app.get(config.serverRoot() + "/api/get_all_user_posts", getAllUserPosts);
 app.get(config.serverRoot() + "/api/get_user_post", getUserPost);
+app.get(config.serverRoot() + "/api/get_all_comments", getAllComments);
 
 // Error handling // TODO refactor this
 app.use((err, req, res, next) => {
