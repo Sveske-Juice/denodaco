@@ -1,4 +1,3 @@
-import { onAuthed } from "./modules/authmanager.js";
 import { uploadComment } from "./modules/commentUtil.js";
 import { onNewPostCreated } from "./modules/postUtils.js";
 
@@ -14,7 +13,9 @@ function init() {
     
     uploadBtn.addEventListener("click", () => {
         const contentElement = document.getElementById(commentContentId);
-        uploadComment(post_id, contentElement.value);
+        uploadComment(post_id, contentElement.value).then(() => {
+            location.reload();
+        })
     });
 }
 
