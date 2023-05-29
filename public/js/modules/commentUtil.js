@@ -18,6 +18,33 @@ export async function getAllCommentsInPost(postid) {
     }
 }
 
+export async function uploadComment(postid, content) {
+    const payload = {
+        "post_id": postid,
+        "content": content,
+    };
+
+    try {
+        const res = await fetch(API_ENDPOINT + `/upload_comment`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+            throw new Error(`Could not upload comment, reason: ${res.statusText}`);
+        }
+
+        alert("succes");
+    }
+    catch (err) {
+        console.error(err);
+        alert(err);
+    }
+}
+
 export function showComment(commentData) {
-    
+
 }

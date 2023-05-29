@@ -4,6 +4,7 @@ const database = require("../database");
 
 function uploadComment(req, res)
 {
+    logger.log(JSON.stringify(req.body));
     const commentData = req.body;
     if (!commentData["post_id"]) {
         res.statusMessage = "No post specified";

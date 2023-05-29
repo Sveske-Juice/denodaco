@@ -3,13 +3,11 @@ Also hides signup and login buttons from nav bar if already logged in. Aswell as
 enabling logout button. */
 
 import { API_ENDPOINT } from "./config.js";
+import { Event } from "./event.js";
 
 let modal;
 let closeBtn;
 
-function Event() {
-    this.handlers = [];
-}
 
 export let onAuthed;
 export let onNotAuthed;
@@ -65,31 +63,6 @@ function notAuthed()
     onNotAuthed.raise();
 }
 
-Event.prototype = {
-    subscribe: function(fn)
-    {
-        // Add subscriber callback function pointer to handlers
-        this.handlers.push(fn);
-    },
 
-    unsubscribe: function(fn)
-    {
-        this.handlers = this.handlers.filter(
-            function (item) {
-                if (item !== fn) {
-                    return item;
-                }
-            }
-        );
-    },
-
-    raise: function(data, thisObj)
-    {
-        let scope = thisObj || window;
-        this.handlers.forEach(function(handler) {
-            handler.call(scope, data);
-        })
-    }
-}
 
 window.addEventListener("load", init);

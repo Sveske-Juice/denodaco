@@ -1,4 +1,7 @@
 import { API_ENDPOINT } from "./config.js";
+import { Event } from "./event.js";
+
+export let onNewPostCreated = new Event();
 
 const postHyperlinkId = "#post-hyperlink";
 const avatarId = "#avatar";
@@ -44,6 +47,7 @@ export function createNewPost(parent, postData) {
     commentsBtn.href = showPostUrl;
 
     parent.appendChild(container);
+    onNewPostCreated.raise();
 }
 
 export async function getUserPost(post_id) {
