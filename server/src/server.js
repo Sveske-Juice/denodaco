@@ -23,6 +23,7 @@ const uploadPost    = require("./routes/uploadPost");
 const getAllUserPosts= require("./routes/getAllUserPosts");
 const getUserPost   = require("./routes/getUserPost");
 const getAllComments= require("./routes/getAllComments");
+const uploadComment = require("./routes/uploadComment");
 
 const app = express();
 const port = 3500;
@@ -57,6 +58,7 @@ app.post(config.serverRoot() + "/api/update_profile", updateProfile);
 app.post(config.serverRoot() + "/api/change_avatar", changeAvatar);
 app.post(config.serverRoot() + "/api/data_collection", dataCollection);
 app.post(config.serverRoot() + "/api/upload_post", uploadPost);
+app.post(config.serverRoot() + "/api/upload_comment", uploadComment);
 
 app.get(config.serverRoot() + "/api/get_profile_data", getProfileData);
 app.get(config.serverRoot() + "/api/avatar", avatar);

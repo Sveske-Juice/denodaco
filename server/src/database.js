@@ -347,6 +347,25 @@ function getAllComments(postid)
     });
 }
 
+function addComment(postid, commentData)
+{
+    return new Promise((resolve, reject) => {
+        if (!postid)
+            return reject("No postid provided");
+        
+        connection.query(`\
+        INSERT INTO comments(creation, post_id, owner_id, content)\
+        VALUES (\
+        ${mysql.escape(commentData["creation"])},
+        ${mysql.escape(commentData["post_id"])},
+        ${mysql.escape(commentData["owner_id"])},
+        ${mysql.escape(commentData["content"])});`, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 module.exports = 
 {
     init,
@@ -361,4 +380,5 @@ module.exports =
     getAllUserPosts,
     getUserPost,
     getAllComments,
+    addComment,
 }
