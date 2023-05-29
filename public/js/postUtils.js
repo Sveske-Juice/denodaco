@@ -1,6 +1,7 @@
 import { API_ENDPOINT } from "./modules/config.js";
 
 const postHyperlinkId = "#post-hyperlink";
+const avatarId = "#avatar";
 const authorId = "#author";
 const creationDateId = "#creation-date";
 const titleId = "#title";
@@ -23,6 +24,10 @@ export function createNewPost(parent, postData) {
         hyperlink.href = showPostUrl;
     
     // Set post data to newly container
+    const avatar = container.querySelector(avatarId);
+    avatar.src = postData["user_avatar_src"];
+
+    
     const author = container.querySelector(authorId);
     author.innerHTML = `Posted by <a href="user.html?id=${postData["owner_id"]}"> @${postData["owner_user_details"]["username"]}</a>`;
 
