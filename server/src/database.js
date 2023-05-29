@@ -311,6 +311,16 @@ function createPost(ownerid, title, content)
     });
 }
 
+function getAllUserPosts()
+{
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM posts;`, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 module.exports = 
 {
     init,
@@ -322,4 +332,5 @@ module.exports =
     getAllUsersExcept,
     updateUserdata,
     createPost,
+    getAllUserPosts,
 }

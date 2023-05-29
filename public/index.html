@@ -11,6 +11,7 @@
         <script type="module" src="js/datacollector.js"></script>
         <script type="module" src="js/showHiddenElementsWhenLoggedIn.js"></script>
         <script type="module" src="js/createPost.js"></script>
+        <script type="module" src="js/userPosts.js"></script>
         
     </head>
 
@@ -34,21 +35,28 @@
             </div>
         </div>
 
-        <div class="post-container">
-            <div class="post-header">
-                <span>Posted by @anon</span>
-                <span>at 25.06.2022: 16:03</span>
-            </div>
-            <div class="post-title">
-                <h2>Why denodaco is a greate place</h2>
-            </div>
-            <div class="post-content">
-                <div class="textarea-wrapper"><textarea readonly>anon I LIKE anon</textarea></div>
-            </div>
-            <div class="post-footer">
-                <a class="post-button">Comments</a>
-                <a class="post-button">Share</a>
-            </div>
+        <div class="posts-parent" id="posts-parent">
+            <template id="post-template">
+                <div class="post-container">
+                    <a class="post-hyperlink" id="post-hyperlink">
+                        <div class="post-header">
+                            <span id="author">Posted by @anon</span>
+                            <span id="creation-date">at 25.06.2022: 16:03</span>
+                        </div>
+                        <div class="post-title">
+                            <h2 id="title">Why denodaco is a greate place</h2>
+                        </div>
+                        <div class="post-content">
+                            <div class="textarea-wrapper"><textarea id="content" readonly>anon I LIKE anon</textarea></div>
+                        </div>
+                        <div class="post-footer">
+                            <a id="comments-button" class="post-button">Comments</a>
+                            <a class="post-button">Share</a>
+                        </div>
+                    </a>
+                </div>
+            </template>
         </div>
+
     </body>
 </html>

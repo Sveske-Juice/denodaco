@@ -490,6 +490,12 @@ nav > .menu {
 }
 
 /* HOMEPAGE POSTS */
+.posts-parent {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2em;
+}
 .post-container {
     display: flex;
     flex-direction: column;
@@ -503,6 +509,11 @@ nav > .menu {
     border-radius: 5px;
 }
 
+.post-hyperlink {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
 .post-header {
     display: flex;
     flex-direction: row;
@@ -512,14 +523,20 @@ nav > .menu {
 }
 
 .post-title {
-    margin-top: -20px;
     border-bottom: solid 1px var(--primary-color);
     margin-bottom: 25px;
+}
+
+.post-title h2 {
+    margin-top: 0px;
 }
 
 .post-content {
     display: flex;
     flex-direction: column;
+}
+.post-content textarea {
+    cursor: pointer;
 }
 
 .post-footer {
@@ -540,6 +557,8 @@ nav > .menu {
 
     padding: 2px 5px;
     border-radius: 2px;
+
+    text-decoration: none;
 
     cursor: pointer;
 }
