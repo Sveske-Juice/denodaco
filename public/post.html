@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Denodaco - Post </title>
+        <link rel="stylesheet" href="styles.css">
+
+        <script src="js/navbar.js" type="text/javascript" defer></script>
+        <script type="module" src="js/createPost.js"></script>
+
+        <script type="module" src="js/datacollector.js"></script>
+        <script type="module" src="js/notLoggedInModal.js"></script>
+        <script type="module" src="js/userPost.js"></script>
+    </head>
+
+    <body>
+        <template id="post-template">
+            <div class="post-container">
+                <div class="post-header">
+                    <span id="author">Posted by @anon</span>
+                    <span id="creation-date">at 25.06.2022: 16:03</span>
+                </div>
+                <div class="post-title">
+                    <h2 id="title">Why denodaco is a greate place</h2>
+                </div>
+                <div class="post-content">
+                    <div class="textarea-wrapper"><textarea id="content" readonly>anon I LIKE anon</textarea></div>
+                </div>
+                <div class="post-footer">
+                    <a id="comments-button" class="post-button">Comments</a>
+                    <a class="post-button">Share</a>
+                </div>
+            </div>
+        </template>
+    </body>
+</html>

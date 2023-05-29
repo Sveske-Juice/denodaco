@@ -321,6 +321,19 @@ function getAllUserPosts()
     });
 }
 
+function getUserPost(postid)
+{
+    return new Promise((resolve, reject) => {
+        if (!postid)
+            return reject("No postid provided");
+
+        connection.query(`SELECT * FROM posts WHERE id = ${mysql.escape(postid)}`, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 module.exports = 
 {
     init,
@@ -333,4 +346,5 @@ module.exports =
     updateUserdata,
     createPost,
     getAllUserPosts,
+    getUserPost,
 }
